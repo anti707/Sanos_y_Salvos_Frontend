@@ -1,37 +1,33 @@
 import Image from "../atoms/Image";
 import Text from "../atoms/Text";
-import Button from "../atoms/Button";
 import PetStatus from "../molecules/PetStatus";
-import "./PetCard.css";
+import "./ReviewCard.css";
 
-function PetCard({
+function ReviewCard({
     imagen,
     nombre,
-    direccion,
-    fecha,
     descripcion,
     estado,
-    boton
+    fecha,
+    valoracion
 }) {
     return (
-        <nav className="pet-card">
-            <div className="pet-imagen">
+        <nav className="review-card">
+            <div className="review-imagen">
                 <Image src={imagen} alt={nombre} />
             </div>
-            
-            <div className="pet-info">
+            <div className="review-info">
                 <Text as="h2">{nombre}</Text>
-                <Text>{direccion}</Text>
-                <Text>{fecha}</Text>
                 <Text>{descripcion}</Text>
-                <PetStatus status={estado} />
-            </div>
-            <div className="pet-boton">
-                <Button>{boton}</Button>
-            </div>
 
+            <div className="review-estado">
+                <PetStatus status={estado} />
+                <Text>{fecha}</Text>
+            </div>
+                <Text>{valoracion}</Text>
+            </div>
         </nav>
     );
 }
 
-export default PetCard;
+export default ReviewCard;
