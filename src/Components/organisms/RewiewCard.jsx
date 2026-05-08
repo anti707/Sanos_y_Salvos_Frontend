@@ -12,12 +12,12 @@ function ReviewCard({
     valoracion
 }) {
     return (
-        <nav className="review-card">
+        <div className="review-card">
             <div className="review-imagen">
                 <Image src={imagen} alt={nombre} />
             </div>
             <div className="review-info">
-                <Text as="h2">{nombre}</Text>
+                <Text variant="h2">{nombre}</Text>
                 <Text>{descripcion}</Text>
 
             <div className="review-estado">
@@ -26,7 +26,7 @@ function ReviewCard({
             </div>
                 <Text>{valoracion}</Text>
             </div>
-        </nav>
+        </div>
     );
 }
 

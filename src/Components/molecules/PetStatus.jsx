@@ -1,5 +1,5 @@
-import React from "react";
-import Error from "../atoms/ErrorMessage";
+
+import ErrorMessage from "../atoms/ErrorMessage";
 
 function PetStatus({ status }) {
   const statusConfig = {
@@ -19,7 +19,7 @@ function PetStatus({ status }) {
 
   const currentStatus = statusConfig[status];
 
-  if (!currentStatus) return Error({ message: "un error a ocurrido" });
+  if (!currentStatus) return <ErrorMessage message="un error a ocurrido" />;
 
   return (
     <p className={`text-sm font-semibold ${currentStatus.className}`}>

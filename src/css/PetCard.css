@@ -1,0 +1,13 @@
+.pet-imagen {
+  width: 12px;
+  height: 200px;
+  flex-wrap: wrap !important;
+}
+.pet-boton{
+  background-color: #61cb2bb3;
+  border-color: #61cb2bb3;
+  padding: 4px 10px 10px;
+  font-weight: 500;
+  border-radius: 20px;
+  flex-wrap: wrap !important;
+}

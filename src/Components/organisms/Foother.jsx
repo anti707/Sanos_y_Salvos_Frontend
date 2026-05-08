@@ -1,6 +1,6 @@
 import Image from "../atoms/Image";
 import Text from "../atoms/Text";
-import "../Foother.css";
+import "../../css/foother.css";
 
 function Footer({
   logo,

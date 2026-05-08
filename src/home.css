@@ -1,14 +1,31 @@
-.home-nav{
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+.home-container{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: #d8d8d8;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('../src/assets/fon2.png');
+    background-size: 100%;
 }
 .home-foo{
     display: flex;
     justify-content: left;
     align-items: flex-end;
     padding: 20px;
-    background-color: #bababa;
+    background-color: #f0eae7;
+}
+.home-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f0eae7;
+}
+.home-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

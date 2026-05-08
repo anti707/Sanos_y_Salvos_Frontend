@@ -1,0 +1,30 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: c3a487;
+  gap: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 4px 2px;
+  background-image: url('../assets/logo.png');
+}
+.boton{
+  background-color: #61cb2bb3; /* Green */
+  border: 7px;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+  text-align: center;
+  display: ruby;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+}
