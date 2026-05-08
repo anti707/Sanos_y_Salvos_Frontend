@@ -2,7 +2,7 @@ import Image from "../atoms/Image";
 import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import PetStatus from "../molecules/PetStatus";
-import "./PetCard.css";
+
 
 function PetCard({
     imagen,

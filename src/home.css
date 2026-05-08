@@ -1,0 +1,14 @@
+.home-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #d8d8d8;
+}
+.home-foo{
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    padding: 20px;
+    background-color: #bababa;
+}

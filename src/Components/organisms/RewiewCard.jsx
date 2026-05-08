@@ -1,7 +1,7 @@
 import Image from "../atoms/Image";
 import Text from "../atoms/Text";
 import PetStatus from "../molecules/PetStatus";
-import "./ReviewCard.css";
+
 
 function ReviewCard({
     imagen,
