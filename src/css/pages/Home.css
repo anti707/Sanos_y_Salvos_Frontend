@@ -1,0 +1,73 @@
+.home-container {
+    padding-top: 40px;
+    text-align: center;
+    max-width: 1200px; 
+}
+
+.home-box {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 25px 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.home-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #7b0e67;
+}
+
+.home-text {
+    font-size: 20px;
+}
+
+.mascotas-home-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.mascotas-home-list {
+    display: flex;
+    gap: 30px;
+}
+
+.home-card {
+    width: 350px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.home-card-img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.home-card-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #7b0e67;
+}
+
+.home-card-desc {
+    font-size: 16px;
+    margin: 15px 0;
+    color: #555;
+}
+
+.home-card-btn {
+    background: #0d6efd;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+}

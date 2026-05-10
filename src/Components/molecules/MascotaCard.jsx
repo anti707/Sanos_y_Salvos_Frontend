@@ -2,29 +2,29 @@ import Image from "../atoms/Image";
 import Text from "../atoms/Text";
 import Button from "../atoms/Button";
 import { Link } from "react-router-dom";
-import "../../styles/components/molecules/ProductoCard.css";
+import "../../styles/components/molecules/MascotaCard.css";
 
 function MascotaCard({ mascota }) {
   return (
-    <div className="card-producto">
+    <div className="card-mascota">
 
       <Link to={`/mascota/${mascota.mascota_id}`}>
         <Image
           src={mascota.imagenUrl}
           alt={mascota.nombreMascota}
-          className="card-img-producto"
+          className="card-img-mascota"
         />
       </Link>
 
-      <Text variant="h5" className="card-title-producto">
+      <Text variant="h5" className="card-title-mascota">
         {mascota.nombreMascota}
       </Text>
 
-      <Text className="card-text-producto">
+      <Text className="card-text-mascota">
         {mascota.descripcionMascota}
       </Text>
 
-      <div className="botones-producto">
+      <div className="botones-mascota">
 
         <Link to={`/mascota/${mascota.mascota_id}`}>
           <Button text="Ver detalles" className="btn-detalles" />
