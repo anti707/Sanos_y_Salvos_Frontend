@@ -1,6 +1,6 @@
-import React { useState } from 'react';
+import { useState } from "react";
 import { Container } from 'react-bootstrap';
-import "../../styles/pages/Home.css";
+import "../../css/pages/Home.css";
 
 function Home() {
     const [mascotas] = useState([]);
