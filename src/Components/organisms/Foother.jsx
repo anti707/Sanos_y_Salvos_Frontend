@@ -1,37 +1,27 @@
-import Image from "../atoms/Image";
+import { Container } from "react-bootstrap";
 import Text from "../atoms/Text";
-import "../../css/foother.css";
+import Link from "../atoms/Link";
+import "../../Css/components/organisms/Footer.css";
 
-function Footer({
-  logo,
-  title,
-  description,
-  links = [],
-}) {
-  return (
-    <footer className="footer">
 
-      <div className="footer-top">
-        {logo && <Image src={logo} alt={title} />}
+function Footer() {
+    return (
+        <footer className="footer-section">
+            <Container className="footer-content">
 
-        <div>
-          <Text variant="h3">{title}</Text>
-          <Text>{description}</Text>
-        </div>
-      </div>
+                <Text className="footer-text">
+                    © {new Date().getFullYear()} 미지 Beauty. Todos los derechos reservados.
+                </Text>
 
-      <div className="footer-links">
-        {links.map((link, index) => (
-          <Text key={index}>{link}</Text>
-        ))}
-      </div>
+                <div className="footer-links">
+                    <Link href="#" className="footer-link">Aviso Legal</Link>
+                    <span className="footer-separator">|</span>
+                    <Link href="#" className="footer-link">Política de Privacidad</Link>
+                </div>
 
-      <Text className="footer-copy">
-        © 2026 {title}
-      </Text>
-
-    </footer>
-  );
+            </Container>
+        </footer>
+    );
 }
 
 export default Footer;

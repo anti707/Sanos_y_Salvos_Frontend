@@ -3,6 +3,8 @@ import Foother from "../Components/organisms/Foother.jsx";
 import PetCard from "../Components/organisms/PetCard.jsx";
 import "../home.css";
 import { Container } from "react-bootstrap";
+import perro1 from "../assets/perro1.jpg";
+import logo from "../assets/logo.png";
 
 function Home() {
     return (
@@ -10,7 +12,7 @@ function Home() {
         <div>
             <div className="home-nav">
                    
-                <Navbar logo="../assets/logo.png" title="Sanos y Salvos" boton="Apoyanos"/>
+                <Navbar logo={logo} title="Sanos y Salvos" boton="Apoyanos"/>
             </div>
                 <Container className="home-container">
                     <div className="home-content">
@@ -18,7 +20,7 @@ function Home() {
                         <p>Somos una organización dedicada a la búsqueda y encuentro de mascotas perdidas. Nuestra misión es ayudar a reunir a las mascotas con sus dueños, brindando apoyo y recursos para facilitar el proceso de búsqueda.</p>
                     </div>
                     <div className="home-petcards">
-                        <PetCard imagen="../assets/perro1.jpg" nombre="Firulais" direccion="Calle 123, Ciudad" fecha="2024-05-01" descripcion="Perro perdido, color marrón, tamaño mediano" estado="Perdido" boton="Ver Detalles"/>
+                        <PetCard imagen={perro1} nombre="Firulais" direccion="Calle 123, Ciudad" fecha="2024-05-01" descripcion="Perro perdido, color marrón, tamaño mediano" estado="Perdido" boton="Ver Detalles"/>
                         <PetCard imagen="" nombre="Mittens" direccion="Avenida Principal, Ciudad" fecha="2024-04-28" descripcion="Gato perdido, color blanco, tamaño pequeño" estado="Perdido" boton="Ver Detalles"/>
                     </div>
                 </Container>
