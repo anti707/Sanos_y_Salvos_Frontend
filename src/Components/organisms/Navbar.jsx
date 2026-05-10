@@ -1,39 +1,28 @@
-import { NavLink, useNavigate } from 'react-router-dom';
-import "../../styles/components/organisms/Navbar.css";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import "../../css/Components/organisms/Navbar.css";
 import BarraBusqueda from "../molecules/BarraBusqueda";
+import logo from "../../assets/logo.png";
 
-function Navbar({ links, title }) {
+function Navbar({ links =[]}) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    navigate("/login");
-    setIsOpen(false);
-  };
-
   const handleLinkClick = (e, link) => {
-    if (link.label === "Salir") { 
+    if (link.label === "Salir") {
       e.preventDefault();
-      handleLogout();
-    } else {
-      setIsOpen(false);
     }
   };
 
-  const goToLogin = () => {
-    navigate("/login");
-  };
-};
 
   return (
     <nav className="navbar-container">
       <div className="navbar-inner">
 
         <div className="nav-left">
-          <img src="/logo.png" alt="Logo" className="nav-logo" />
-          <h1 className="nav-brand">미지 <span>Salvos</span></h1>
+          <img src={logo} alt="Logo" className="nav-logo" />
+          <h1 className="nav-brand"><span>Sanos&Salvos</span></h1>
         </div>
 
         <div className="nav-menu">
@@ -52,20 +41,7 @@ function Navbar({ links, title }) {
 
 
         <div className="nav-right">
-
-          {!isAdmin && (
-            <BarraBusqueda onBuscar={(query) => navigate(`/mascotas?search=${query}`)} />
-          )}
-
-          {!user ? (
-            <button className="btn-account" onClick={goToLogin}>
-              Mi Cuenta
-            </button>
-          ) : (
-            <button className="btn-logout" onClick={handleLogout}>
-              Cerrar Sesión
-            </button>
-          )}
+          <BarraBusqueda onBuscar={(query) => navigate(`/search?q=${query}`)} />
 
         </div>
 
@@ -87,18 +63,9 @@ function Navbar({ links, title }) {
           </NavLink>
         ))}
 
-
-        {!user ? (
-          <button className="nav-mobile-btn" onClick={goToLogin}>
-            Mi Cuenta
-          </button>
-        ) : (
-          <button className="nav-mobile-btn" onClick={handleLogout}>
-            Cerrar Sesión
-          </button>
-        )}
       </div>
     </nav>
   );
+};
 
 export default Navbar;

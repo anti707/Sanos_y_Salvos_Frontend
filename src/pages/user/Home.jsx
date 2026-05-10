@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Container } from 'react-bootstrap';
 import "../../css/pages/Home.css";
+import Navbar from "../../Components/organisms/Navbar";
+import Foother from "../../Components/organisms/Foother";
 
 function Home() {
     const [mascotas] = useState([]);
@@ -8,6 +10,11 @@ function Home() {
  
   return (
     <Container className="home-container">
+
+        <div className="home-navbar">
+            <Navbar />
+        </div>
+
 
       <div className="home-box">
         <h1 className="home-title">Sanos y Salvos</h1>
@@ -39,6 +46,10 @@ function Home() {
 
             </div>
           ))}
+        </div>
+
+        <div className="home-footer">
+          <Foother />
         </div>
 
       </div>

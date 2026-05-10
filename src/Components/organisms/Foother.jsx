@@ -1,16 +1,16 @@
 import { Container } from "react-bootstrap";
 import Text from "../atoms/Text";
 import Link from "../atoms/Link";
-import "../../Css/components/organisms/Footer.css";
+import "../../css/Components/organisms/Foother.css";
 
 
-function Footer() {
+function Foother() {
     return (
         <footer className="footer-section">
             <Container className="footer-content">
 
                 <Text className="footer-text">
-                    © {new Date().getFullYear()} 미지 Beauty. Todos los derechos reservados.
+                    © {new Date().getFullYear()} Sanos y salvos.
                 </Text>
 
                 <div className="footer-links">
@@ -24,4 +24,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default Foother;

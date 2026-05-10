@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Buscar from "../atoms/BuscarInput";
-import BotonBuscar from "../atoms/ButtonBuscar";
+import Buscar from "../atoms/Buscar";
+import BotonBuscar from "../atoms/BotonBuscar";
 
 function BarraBusqueda({ onBuscar }) {
   const [buscar, setBuscar] = useState("");
