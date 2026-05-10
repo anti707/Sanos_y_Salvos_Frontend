@@ -7,12 +7,19 @@ import logo from "../../assets/logo.png";
 function Navbar({ links =[]}) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
 
 
   const handleLinkClick = (e, link) => {
     if (link.label === "Salir") {
       e.preventDefault();
+    } else {      
+      setIsOpen(false);
     }
+  };
+
+    const goToLogin = () => {
+    navigate("/login");
   };
 
 
@@ -39,10 +46,25 @@ function Navbar({ links =[]}) {
             </NavLink>
           ))}
 
+          {user && (
+            <span className="nav-user">
+              Hola, <b>{user.nombreUsuario}</b>
+            </span>
+          )}
+
 
         <div className="nav-right">
           <BarraBusqueda onBuscar={(query) => navigate(`/search?q=${query}`)} />
 
+           {!user ? (
+            <button className="btn-account" onClick={goToLogin}>
+              Mi Cuenta
+            </button>
+          ) : (
+            <button className="btn-logout" onClick={handleLogout}>
+              Cerrar Sesión
+            </button>
+          )}
         </div>
 
         <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
@@ -62,6 +84,20 @@ function Navbar({ links =[]}) {
             {link.label}
           </NavLink>
         ))}
+
+        {user && (
+          <p className="nav-mobile-user">Hola, {user.nombreUsuario}</p>
+        )}
+
+        {!user ? (
+          <button className="nav-mobile-btn" onClick={goToLogin}>
+            Mi Cuenta
+          </button>
+        ) : (
+          <button className="nav-mobile-btn" onClick={handleLogout}>
+            Cerrar Sesión
+          </button>
+        )}
 
       </div>
     </nav>

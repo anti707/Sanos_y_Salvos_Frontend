@@ -1,0 +1,25 @@
+.search-location {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #7b3fe4;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.9;
+}

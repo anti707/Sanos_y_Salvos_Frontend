@@ -1,5 +1,5 @@
 import Button from "../atoms/Button";
-import DynamicTexts from "../molecules/DynamicTexts";
+import DynamicTexts from "../molecules/DynamicText";
 import DynamicInputs from "../molecules/DynamicInputs";
 import Text from "../atoms/Text";
 
