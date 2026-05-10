@@ -22,6 +22,11 @@ function Navbar({ links =[]}) {
     navigate("/login");
   };
 
+  const handleLogout = () => {
+  localStorage.removeItem("user");
+  navigate("/login");
+  };
+
 
   return (
     <nav className="navbar-container">

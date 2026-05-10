@@ -1,54 +1,27 @@
-import Button from "../atoms/Button";
-import DynamicTexts from "../molecules/DynamicText";
-import DynamicInputs from "../molecules/DynamicInputs";
-import Text from "../atoms/Text";
 
-function Forms({ content = [], className = "" }) {
-    return (
-         <div className={className}>
-            {content.map((item, index) => {
 
-                if (item.type === "text") {
-                    return <DynamicTexts key={index} Texts={item.text} />;
-                }
+function Forms({ content, onChange}) {
 
-                if (item.type === "label") {
-                    return (
-                        <Text
-                            key={index}
-                            variant="label"
-                            className={item.text[0].className}
-                        >
-                            {item.text[0].content}
-                        </Text>
-                    );
-                }
+  return (
+    <div>
 
-                if (item.type === "submit") {
-                    return (
-                        <Button
-                            key={index}
-                            text={item.text}
-                            className={item.className}
-                            type="submit"
-                        />
-                    );
-                }
+      <input
+        type="email"
+        value={content.correo}
+        placeholder="Correo"
+        onChange={onChange}
+      />
 
-                if (item.type === "inputs") {
-                    return (
-                        <DynamicInputs
-                            key={index}
-                            Inputs={item.inputs}
-                            className={item.className}
-                        />
-                    );
-                }
+      <input
+        type="password"
+        value={content.contrasena}
+        placeholder="Contraseña"
+        onChange={onChange}
+      />
 
-                return null;
-            })}
-        </div>
-    );
+
+    </div>
+  );
 }
 
 export default Forms;
