@@ -22,6 +22,10 @@ function Navbar({ links =[]}) {
     navigate("/login");
   };
 
+   const goToapoyanos = () => {
+    navigate("/apoyanos");
+  };
+
   const handleLogout = () => {
   localStorage.removeItem("user");
   navigate("/login");
@@ -71,12 +75,15 @@ function Navbar({ links =[]}) {
             </button>
           )}
         </div>
+        <button className="btn-account" onClick={goToapoyanos}>
+              apoyanos
+            </button>
 
-        <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
-          ☰
-        </div>
-      </div>
-      </div>
+          <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
+            ☰
+          </div>
+          </div>
+          </div>
 
       <div className={`nav-mobile ${isOpen ? "open" : ""}`}>
         {links.map((link, i) => (
