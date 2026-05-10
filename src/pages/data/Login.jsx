@@ -4,6 +4,7 @@ import "../../css/pages/Login.css";
 import Navbar from "../../Components/organisms/Navbar";
 import Foother from "../../Components/organisms/Foother";
 
+
 const Login = () => {
     const [form, setForm] = useState({
         correo: "",
@@ -20,10 +21,13 @@ const Login = () => {
             <div className="login-navbar">
                         <Navbar />
                     </div>
-
-            <form onSubmit={handleSubmit} className="login-card">
-                <Forms content={form} />
-            </form>
+                <div className="login-header">
+                    <h1>Iniciar Sesión</h1>
+                    <form onSubmit={handleSubmit} className="login-card">
+                        <Forms content={form} />
+                    </form>
+                    
+                </div>
 
             <div className="login-footer">
                 <Foother />

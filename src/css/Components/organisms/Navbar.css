@@ -22,7 +22,14 @@
 }
 
 .nav-logo {
-  height: 80px;
+  height: 90px;
+}
+.btn-account {
+  background-color: #7944c0;
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 10px;
+  border-radius: 15px;
 }
 
 .nav-brand {
@@ -46,38 +53,17 @@
 }
 .nav-right {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  align-items: baseline;
+  gap: 250px;
   flex-shrink: 0;
-}
-.nav-toggle {
-  display: none;
-  cursor: pointer;
-  font-size: 30px;
 }
 
 .nav-mobile {
   display: none;
   flex-direction: column;
-  padding: 14px;
+  padding: 70px;
   background: #e8e5ff;
 }
-.nav-mobile.open {
-  display: flex;
-}
-
-.nav-mobile-link {
-  padding: 12px;
-  text-decoration: none;
-  color: #5A2B45;
-  font-size: 18px;
-  border-bottom: 1px solid #cdc2f6;
-}
-
-.nav-mobile-user {
-  margin: 12px 0;
-  font-weight: bold;
-}
 
 
 
@@ -88,29 +74,5 @@
 
 
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: c3a487;
-  gap: 70px;
-}
 
-.logo {
-  display: flex;
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-.boton{
-  background-color: #61cb2bb3; /* Green */
-  border: 7px;
-  color: rgb(255, 255, 255);
-  padding: 10px 20px;
-  text-align: center;
-  display: ruby;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 20px;
-}
+
