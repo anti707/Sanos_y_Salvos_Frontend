@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Forms from "../../Components/templates/Forms"
 import "../../css/pages/Login.css";
 import "../../css/Components/organisms/Navbar.css";
@@ -12,6 +13,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 const auth = getAuth(appFirebase);
 
 const Login = () => {
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         correo: "",
         contrasena: ""
@@ -28,24 +30,31 @@ const Login = () => {
 
     const [ register, setRegister ] = useState(false);
 
-    const functAuth = async(e) => {
+      const functAuth = async(e) => {
         e.preventDefault();
         const { correo, contrasena } = form;
 
         if(register){
             try {
                 await createUserWithEmailAndPassword(auth, correo, contrasena);
+                alert("Usuario creado exitosamente");
+                navigate("/"); // <-- redirige al Home después de registrarse
             } catch (error) {
+                alert("Error al iniciar sesión: " + error.message);
                 console.error("Error al crear el usuario:", error);
             }
         } else {
             try {
                 await signInWithEmailAndPassword(auth, correo, contrasena);
+                alert("Inicio de sesión exitoso");
+                navigate("/"); // <-- redirige al Home después de login
             } catch (error) {
+                alert("Error al iniciar sesión: " + error.message);
                 console.error("Error al iniciar sesión:", error);
             }
         }
     }
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -63,9 +72,9 @@ const Login = () => {
                     </div>
                     <h1>iniciar sesion</h1>
                 <div className="login-header">
-            <form onSubmit={handleSubmit} className="login-card">
+            <form onSubmit={functAuth} className="login-card">
                 <Forms content={form} onChange={handleChange} />
-                    <button className="btn-account" type="submit" onClick={functAuth}>
+                    <button className="btn-account" type="submit">
                         {register ? "Registrarse" : "Iniciar Sesion"}
                     </button>
                     <h2>

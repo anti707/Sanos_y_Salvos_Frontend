@@ -18,8 +18,8 @@ function Navbar({ links =[]}) {
     }
   };
 
-    const goToLogin = () => {
-    navigate("/login");
+    const goToProfile = () => {
+    navigate("/profile");
   };
 
    const goToapoyanos = () => {
@@ -70,7 +70,7 @@ function Navbar({ links =[]}) {
           <BarraBusqueda onBuscar={(query) => navigate(`/search?q=${query}`)} />
 
            {!user ? (
-            <button className="btn-account" onClick={goToLogin}>
+            <button className="btn-account" onClick={goToProfile}>
               Mi Cuenta
             </button>
           ) : (
@@ -110,7 +110,7 @@ function Navbar({ links =[]}) {
         )}
 
         {!user ? (
-          <button className="nav-mobile-btn" onClick={goToLogin}>
+          <button className="nav-mobile-btn" onClick={goToProfile}>
             Mi Cuenta
           </button>
         ) : (
