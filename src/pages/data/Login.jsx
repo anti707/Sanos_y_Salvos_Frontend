@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate, allert } from "react-router-dom";
 import Forms from "../../Components/templates/Forms"
 import "../../css/pages/Login.css";
 import "../../css/Components/organisms/Navbar.css";
@@ -9,7 +8,7 @@ import Foother from "../../Components/organisms/Foother";
 import appFirebase from "../../credential";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 
-const navigate = useNavigate();
+
 const auth = getAuth(appFirebase);
 
 const Login = () => {
@@ -29,31 +28,24 @@ const Login = () => {
 
     const [ register, setRegister ] = useState(false);
 
-      const functAuth = async(e) => {
+    const functAuth = async(e) => {
         e.preventDefault();
         const { correo, contrasena } = form;
 
         if(register){
             try {
                 await createUserWithEmailAndPassword(auth, correo, contrasena);
-                allert("Usuario creado exitosamente");
-                navigate("/"); // <-- redirige al Home después de registrarse
             } catch (error) {
-                allert("Error al iniciar sesión: " + error.message);
                 console.error("Error al crear el usuario:", error);
             }
         } else {
             try {
                 await signInWithEmailAndPassword(auth, correo, contrasena);
-                allert("Inicio de sesión exitoso");
-                navigate("/"); // <-- redirige al Home después de login
             } catch (error) {
-                allert("Error al iniciar sesión: " + error.message);
                 console.error("Error al iniciar sesión:", error);
             }
         }
     }
-
     const handleChange = (e) => {
         const { name, value } = e.target;
 
