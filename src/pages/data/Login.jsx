@@ -21,10 +21,11 @@ const Login = () => {
             <div className="login-navbar">
                         <Navbar />
                     </div>
+                    <h1>iniciar sesion</h1>
                 <div className="login-header">
-                    <h1>Iniciar Sesión</h1>
                     <form onSubmit={handleSubmit} className="login-card">
                         <Forms content={form} />
+                        <a href="/registro">¿No tienes cuenta? Regístrate aquí</a>
                     </form>
                     
                 </div>

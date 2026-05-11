@@ -1,8 +1,25 @@
+.Form{
+  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
 .form-container {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.btn-account {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #7b3fe4;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .form-header {
@@ -35,9 +52,6 @@
   border: 1px solid #ccc;
 }
 
-.form-button {
-  margin-top: 10px;
-}
 
 .btn-login {
   width: 100%;

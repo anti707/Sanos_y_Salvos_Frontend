@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap';
 import "../../css/pages/Home.css";
 import Navbar from "../../Components/organisms/Navbar";
 import Foother from "../../Components/organisms/Foother";
-import  HomeMap from "../../Components/templates/HomeMap";
+
 
 function Home() {
     const [mascotas] = useState([]);

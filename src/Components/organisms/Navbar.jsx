@@ -26,6 +26,10 @@ function Navbar({ links =[]}) {
     navigate("/apoyanos");
   };
 
+  const goTomap = () => {
+    navigate("/map");
+  };
+
   const handleLogout = () => {
   localStorage.removeItem("user");
   navigate("/login");
@@ -77,6 +81,10 @@ function Navbar({ links =[]}) {
         </div>
         <button className="btn-account" onClick={goToapoyanos}>
               apoyanos
+            </button>
+
+            <button className="btn-account" onClick={goTomap}>
+              Mapa
             </button>
 
           <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>

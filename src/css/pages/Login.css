@@ -5,7 +5,7 @@
 }
 .login-page {
    width: 100%;
-    padding-top: 40px;
+    padding-top: 5px;
     text-align: center;
     align-items: center;
     max-width: 100%; 
@@ -38,19 +38,21 @@
 }
 
 .login-card {
-    justify-content: center !important;
+    justify-content: first baseline !important;
+    place-items: initial;
     align-items: center;
     width: 100%;
     max-width: 500px;
     background: #fff;
     border-radius: 25px;
-    padding: 70px 70px;
+    padding: 110px 120px;
     box-shadow: 0 0 25px rgba(222, 214, 255, 0.35);
-    border: 26px unset #f9ecfc;
+    border: 76px unset #f9ecfc;
+
 }
 .login-btn {
     width: 100%;
-    padding: 12px;
+    padding: 32px;
     background: #007bff;
     color: white;
     border: none;
