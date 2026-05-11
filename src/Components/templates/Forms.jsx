@@ -1,8 +1,5 @@
 
- const goToHome = () => {
-    navigate("/Home");
-  };
-
+ 
 function Forms({ content, onChange}) {
 
   return (
@@ -11,6 +8,7 @@ function Forms({ content, onChange}) {
         <h3>Correo Electrónico</h3>
       <input
         type="email"
+        name="correo"
         value={content.correo}
         placeholder="Correo"
         onChange={onChange}
@@ -19,14 +17,12 @@ function Forms({ content, onChange}) {
       <h3>Contraseña</h3>
       <input
         type="password"
+        name="contrasena"
         value={content.contrasena}
         placeholder="Contraseña"
         onChange={onChange}
       />
 
-      <button className="btn-account" onClick={goToHome}>
-              iniciar sesion
-            </button>
             
     </div>
   );
