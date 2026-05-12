@@ -5,6 +5,8 @@ import Login from "./pages/data/Login";
 import Apoyanos from "./pages/user/Apoyanos";
 import Map from "./pages/user/Map";
 import Profile from "./pages/user/Profile";
+import Nabvar from "./Components/organisms/Navbar";
+import Footer from "./Components/organisms/Foother";
 //firebase
 import appFirebase from '../src/credential';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -30,6 +32,9 @@ function App() {
     
   return (
       <main>
+
+        <Nabvar/>
+
         <Routes>
           <Route path="/" element={ <PrivateRoute user={user}>  <Home user={user} /> </PrivateRoute> } />
           <Route path="/login" element={<Login />} />
@@ -37,6 +42,8 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/profile" element={ <PrivateRoute user={user}> <Profile user={user} /> </PrivateRoute> } />
         </Routes>
+
+        <Footer/>
       </main>
 
   );

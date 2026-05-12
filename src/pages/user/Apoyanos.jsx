@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Container } from 'react-bootstrap';
 import "../../css/pages/Home.css";
-import Navbar from "../../Components/organisms/Navbar";
-import Foother from "../../Components/organisms/Foother";
 import  HomeMap from "../../Components/templates/HomeMap";
 
 function apoyanos() {
@@ -11,10 +9,6 @@ function apoyanos() {
  
   return (
     <Container className="home-container">
-
-        <div className="home-navbar">
-            <Navbar />
-        </div>
 
 
       <div className="home-box">
@@ -51,9 +45,6 @@ function apoyanos() {
             
       
 
-        <div className="home-footer">
-          <Foother />
-        </div>
 
       </div>
 

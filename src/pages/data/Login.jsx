@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Forms from "../../Components/templates/Forms"
 import "../../css/pages/Login.css";
 import "../../css/Components/organisms/Navbar.css";
-import Navbar from "../../Components/organisms/Navbar";
-import Foother from "../../Components/organisms/Foother";
 //FireBase
 import appFirebase from "../../credential";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -67,9 +65,7 @@ const Login = () => {
     return (
         <main className="login-page">
 
-            <div className="login-navbar">
-                        <Navbar />
-                    </div>
+            
                     <h1>iniciar sesion</h1>
                 <div className="login-header">
             <form onSubmit={functAuth} className="login-card">
@@ -87,9 +83,7 @@ const Login = () => {
                     
                 </div>
 
-            <div className="login-footer">
-                <Foother />
-            </div>
+
         </main>
     );
 };

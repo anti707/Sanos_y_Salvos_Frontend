@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Container } from 'react-bootstrap';
 import "../../css/pages/Home.css";
-import Navbar from "../../Components/organisms/Navbar";
-import Foother from "../../Components/organisms/Foother";
+
 
 
 function Home() {
@@ -11,10 +10,6 @@ function Home() {
  
   return (
     <Container className="home-container">
-
-        <div className="home-navbar">
-            <Navbar />
-        </div>
 
 
       <div className="home-box">
@@ -49,11 +44,7 @@ function Home() {
           ))}
         </div>
             
-      
 
-        <div className="home-footer">
-          <Foother />
-        </div>
 
       </div>
 
