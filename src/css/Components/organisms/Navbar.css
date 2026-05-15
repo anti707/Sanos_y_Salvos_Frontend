@@ -1,7 +1,7 @@
 .navbar-container {
   width: 100%;
-  background: #faf7fd;
-  border-bottom: 1px solid #d0c2f6;
+  background: #e6f7f9;
+  border-bottom: 1px solid #5eb4c3;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -25,7 +25,7 @@
   height: 90px;
 }
 .btn-account {
-  background-color: #7944c0;
+  background-color: #3baabd;
   color: #ffffff;
   padding: 8px 16px;
   border: 10px;
@@ -35,7 +35,7 @@
 .nav-brand {
   font-size: 28px;
   font-weight: 700;
-  color: #894fd4;
+  color: #4ab8c2;
 }
 .nav-menu {
   display: flex;

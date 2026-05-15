@@ -12,20 +12,28 @@ function Foother() {
 
                 
 
-                <div className="footer-links">
-                    <Link href="#" className="footer-link">Aviso Legal</Link>
-                    <span className="footer-separator">|</span>
-                    <Link href="#" className="footer-link">Política de Privacidad</Link>
-                </div>
+                    <div className="footer-left">
+                        <Text className="footer-text">REDES SOCIALES</Text>
+                        <Link href="#" className="footer-link">Instagram</Link>
+                        <Link href="#" className="footer-link">Facebook</Link>
+                        <Link href="#" className="footer-link">Twitter</Link>
+                        <Link href="#" className="footer-link">tik-tok</Link>
+                    </div>
 
-                <Text className="footer-text">
-                    © {new Date().getFullYear()} Sanos y salvos.
-                </Text>
 
-                <div className="footer-left">
-                          <img src={logo} alt="Logo" className="footer-logo" />
+                    <div className="footer-center">
+                        <Text className="footer-text">CONTACTANOS</Text>
+                        <Link href="#" className="footer-link">Términos y Condiciones</Link>
+                        <Link href="#" className="footer-link">Contacto</Link>
+                    </div>
+
+
+                    <div className="footer-rigth">
+                        <img src={logo} alt="Logo" className="footer-logo" />
                           
-                        </div>
+                    </div>
+
+                        
 
             </Container>
         </footer>
