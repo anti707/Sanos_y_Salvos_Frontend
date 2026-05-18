@@ -71,23 +71,8 @@ function Navbar({ links =[]}) {
         <div className="nav-right">
           <BarraBusqueda onBuscar={(query) => navigate(`/search?q=${query}`)} />
 
-           {!user ? (
-            <button className="btn-account" onClick={goToProfile}>
-              Mi Cuenta
-            </button>
-          ) : (
-            <button className="btn-logout" onClick={handleLogout}>
-              Cerrar Sesión
-            </button>
-          )}
         </div>
-        <button className="btn-account" onClick={goToapoyanos}>
-              apoyanos
-            </button>
-
-            <button className="btn-account" onClick={goTomap}>
-              Mapa
-            </button>
+        
 
             <MenuDesplegable/>
 
