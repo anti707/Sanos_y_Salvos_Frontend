@@ -1,28 +1,43 @@
-function CardHorizontal() {
+import Text from "../atoms/Text";
+
+function CardHorizontal({
+  imagen,
+  titulo,
+  descripcion,
+  fecha,
+}) {
   return (
-    <div className="card mb-3" style={{ maxWidth: "540px" }}>
+    <div
+      className="card mb-3 shadow-sm"
+      style={{ maxWidth: "540px" }}
+    >
       <div className="row g-0">
+
         <div className="col-md-4">
           <img
-            src="..."
-            className="img-fluid rounded-start"
-            alt="..."
+            src={imagen}
+            className="img-fluid rounded-start h-100 object-fit-cover"
+            alt={titulo}
           />
         </div>
+
         <div className="col-md-8">
           <div className="card-body">
 
-            <h5 className="card-title">
-              Card title
-            </h5>
-            <p className="card-text">
-              This is a wider card with supporting text below as a natural lead-in to additional content.
-            </p>
-            <p className="card-text">
+            <h6 className="card-title">
+              <Text>{titulo}</Text>
+            </h6>
+
+            <h4 className="card-text">
+              <Text>{descripcion}</Text>
+            </h4>
+
+            <h6 className="card-text">
               <small className="text-body-secondary">
-                Last updated 3 mins ago
+                {fecha}
               </small>
-            </p>
+            </h6>
+
           </div>
         </div>
 
