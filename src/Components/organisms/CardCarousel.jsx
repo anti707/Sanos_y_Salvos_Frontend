@@ -1,65 +1,74 @@
 import { useEffect, useRef } from "react";
-import MascotaCard from "../molecules/MascotaCard";
+import CardHorizontal from "../molecules/CardHorizontal";
 
-function CardCarousel({ items }) {
+function CardCarousel({ mascotas }) {
   const carouselRef = useRef(null);
-
   useEffect(() => {
     const carousel = carouselRef.current;
-
     const interval = setInterval(() => {
       if (carousel) {
-
-        // Si llega abajo vuelve arriba
+        // Si llega al final vuelve al inicio
         if (
-          carousel.scrollTop + carousel.clientHeight >=
-          carousel.scrollHeight
+          carousel.scrollLeft + carousel.clientWidth >=
+          carousel.scrollWidth - 10
         ) {
           carousel.scrollTo({
-            top: 0,
+            left: 0,
             behavior: "smooth",
           });
         } else {
-
-          // Baja automáticamente
           carousel.scrollBy({
-            top: 250,
+            left: 400,
             behavior: "smooth",
           });
+
         }
       }
-    }, 3000);
 
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
-
   return (
-    <div className="w-full flex justify-center py-10">
+    <div className="w-full overflow-hidden py-10">
 
       <div
         ref={carouselRef}
         className="
-          h-[600px]
-          w-[350px]
-          overflow-y-auto
-          scroll-smooth
-          space-y-6
-          p-4
+          d-flex
+          gap-4
+          overflow-x-auto
+          px-4
         "
         style={{
+          scrollBehavior: "smooth",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
         }}
       >
 
-        {items.map((item) => (
-          <MascotaCard
-            key={item.id}
-            mascota={item}
-          />
+        {mascotas.map((mascota) => (
+
+          <div
+            key={mascota.id}
+            style={{
+              minWidth: "700px",
+              flexShrink: 0,
+            }}
+          >
+
+            <CardHorizontal
+              imagen={mascota.imagen}
+              titulo={mascota.titulo}
+              descripcion={mascota.descripcion}
+              fecha={mascota.fecha}
+            />
+
+          </div>
+
         ))}
 
       </div>
+
     </div>
   );
 }

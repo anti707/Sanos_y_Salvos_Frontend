@@ -2,6 +2,8 @@ import { Container } from 'react-bootstrap';
 import "../../css/pages/Home.css";
 import "../../Components/molecules/CardHorizontal"
 import CardHorizontal from "../../Components/molecules/CardHorizontal";
+import "../../Components/organisms/CardCarousel"
+import CardCarousel from '../../Components/organisms/CardCarousel';
 
 
 
@@ -21,7 +23,7 @@ function Home() {
       id: 3,
       imagen: "https://placedog.net/501",
       titulo: "Rocky",
-      descripcion: "Le encanta correr y jugar.se perdio hace 7 horas en la florida",
+      descripcion: "perrito amigable con problemas de diabetes, se perdio hace 7 horas en la florida",
       fecha: "Hace 1 hora",
     },
   ];
@@ -47,7 +49,9 @@ function Home() {
           />
         ))}
 
+
       </div>
+
 
     </Container>
   );
