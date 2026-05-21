@@ -147,6 +147,18 @@ const preguntas = [
         </div>
       </div>
 
+              <div className="my-5" style={{width: "100vw",marginLeft: "calc(-50vw + 50%)",}}>
+          <img
+            src="https://media.istockphoto.com/id/2168279088/es/vector/estampado-de-pata-azul-y-patrón-de-corazón-sobre-fondo-claro.jpg?s=612x612&w=0&k=20&c=4qpWz_bAHOdB_v3KRRwiwqGwIdb9qerfz2cvjs5NMuc="
+            alt="Banner mascotas"
+            className="w-80 rounded"
+            style={{
+              height: "250px",
+              objectFit: "scale-down",
+            }}
+          />
+        </div>
+
       <div className="d-flex flex-column gap-4 align-items-right">
         {mascotas.map((mascota) => (
           <CardHorizontal
