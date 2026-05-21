@@ -1,9 +1,11 @@
 import Text from "../atoms/Text";
 
+
 function CardGuia({
   imagen,
   titulo,
   descripcion,
+  link,
 }) {
 
   return (
@@ -29,10 +31,12 @@ function CardGuia({
         <Text>{titulo}</Text>
         <Text>{descripcion}</Text>
         <a
-          href="#"
-          className="btn btn-light px-4 py-2 rounded-pill shadow"
-        >
-          Detalles
+            href={link}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-light px-4 py-2 rounded-pill shadow"
+            >
+            Detalles
         </a>
       </div>
     </div>

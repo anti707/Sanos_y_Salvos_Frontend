@@ -54,7 +54,7 @@ function Home() {
     titulo: "¿Qué hacer si tu mascota se pierde?",
     descripcion:
       "Aprende los primeros pasos para encontrar a tu mascota rápidamente: avisar a vecinos, publicar en redes sociales y recorrer la zona.",
-    fecha: "Hace 10 minutos",
+    link: "https://www.24horas.cl/tendencias/mascotas/que-hago-si-se-perdio-mi-mascota",
   },
 
   {
@@ -63,7 +63,7 @@ function Home() {
     titulo: "Cómo actuar en una emergencia veterinaria",
     descripcion:
       "Conoce señales de alerta, cómo reaccionar ante accidentes y qué incluir en un kit básico de primeros auxilios para mascotas.",
-    fecha: "Hace 30 minutos",
+    link: "https://vetparquevespucio.cl/joomla/index.php/noticias/tenencia-responsable/ejemplos-de-urgencias-veterinarias-como-actuar-en-caso-de-emergencia",
   },
 
   {
@@ -72,7 +72,7 @@ function Home() {
     titulo: "Consejos para cuidar perros mayores",
     descripcion:
       "Descubre recomendaciones sobre alimentación, ejercicio y cuidados especiales para mejorar la calidad de vida de perros senior.",
-    fecha: "Hace 1 hora",
+    link: "https://mx.virbac.com/cuidados-de-un-perro-viejito",
   },
 
   {
@@ -81,7 +81,7 @@ function Home() {
     titulo: "Cómo ayudar a una mascota con ansiedad",
     descripcion:
       "Aprende técnicas para reducir el estrés y la ansiedad en perros y gatos cuando quedan solos o enfrentan cambios de ambiente.",
-    fecha: "Hace 2 horas",
+    link: "https://www.purina.com/es/articulos/perro/comportamiento/comprender-a-los-perros/como-calmar-la-ansiedad-y-el-miedo-en-los-perros",
   },
 
   {
@@ -90,7 +90,7 @@ function Home() {
     titulo: "Alimentos peligrosos para mascotas",
     descripcion:
       "Infórmate sobre comidas tóxicas para perros y gatos como chocolate, cebolla, uvas y otros alimentos comunes del hogar.",
-    fecha: "Hace 3 horas",
+    link: "https://www.purina.es/cuidados/perros/alimentacion/guia/alimentos-toxicos",
   },
 
   {
@@ -99,7 +99,7 @@ function Home() {
     titulo: "Cómo preparar tu hogar para un nuevo cachorro",
     descripcion:
       "Guía básica para adaptar espacios, elegir juguetes seguros y crear una rutina saludable para tu nueva mascota.",
-    fecha: "Hace 5 horas",
+    link: "https://www.purina.com/es/articulos/perro/cachorro/tener-un-cachorro/presentacion-de-un-nuevo-cachorro",
   },
 
 ];
@@ -202,10 +202,11 @@ const preguntas = [
         <div className="d-flex flex-row flex-wrap gap-4 justify-content-center">
         {guias.map((guia) => (
           <CardGuia
-            key={guia.id}
+            id={guia.id}
             imagen={guia.imagen}
             titulo={guia.titulo}
             descripcion={guia.descripcion}
+            link={guia.link}
           />
         ))}
       </div>
