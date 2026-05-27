@@ -22,7 +22,7 @@ function Foother() {
 
 
                     <div className="footer-center">
-                        <Text className="footer-text">CONTACTANOS</Text>
+                        <Text className="footer-text">terminos</Text>
                         <Link href="#" className="footer-link">Términos y Condiciones</Link>
                         <Link href="#" className="footer-link">Contacto</Link>
                     </div>

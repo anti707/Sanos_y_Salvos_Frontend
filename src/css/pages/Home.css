@@ -148,3 +148,35 @@
     padding: 25px;
     box-shadow: 0 10px 25px rgba(98, 97, 97, 0.1);
 }
+
+.home-buttons-container {
+  display: flex;
+  justify-content: center; 
+  gap: 100px;             
+  margin-top: 50px;        
+}
+
+
+.btn-primary, .btn-secondary {
+  padding: 32px 64px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #6689ef; 
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #5a79d7;
+}
+
+.btn-secondary {
+  background-color: #4ed164;
+  color: white;
+}
+.btn-secondary:hover {
+  background-color: #3cb352;
+}

@@ -1,76 +1,59 @@
-import { useEffect, useRef } from "react";
-import CardHorizontal from "../molecules/CardHorizontal";
-
-function CardCarousel({ mascotas }) {
-  const carouselRef = useRef(null);
-  useEffect(() => {
-    const carousel = carouselRef.current;
-    const interval = setInterval(() => {
-      if (carousel) {
-        // Si llega al final vuelve al inicio
-        if (
-          carousel.scrollLeft + carousel.clientWidth >=
-          carousel.scrollWidth - 10
-        ) {
-          carousel.scrollTo({
-            left: 0,
-            behavior: "smooth",
-          });
-        } else {
-          carousel.scrollBy({
-            left: 400,
-            behavior: "smooth",
-          });
-
-        }
-      }
-
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+const CardCarousel = ({
+  items,
+  id = "carouselExample",
+}) => {
   return (
-    <div className="w-full overflow-hidden py-10">
+    <div
+      id={id}
+      className="carousel slide"
+      data-bs-ride="carousel"
+    >
+      <div className="carousel-inner">
 
-      <div
-        ref={carouselRef}
-        className="
-          d-flex
-          gap-4
-          overflow-x-auto
-          px-4
-        "
-        style={{
-          scrollBehavior: "smooth",
-          scrollbarWidth: "none",
-          msOverflowStyle: "none",
-        }}
-      >
-
-        {mascotas.map((mascota) => (
-
+        {items.map((item, index) => (
           <div
-            key={mascota.id}
-            style={{
-              minWidth: "700px",
-              flexShrink: 0,
-            }}
+            key={index}
+            className={`carousel-item ${
+              index === 0 ? "active" : ""
+            }`}
           >
-
-            <CardHorizontal
-              imagen={mascota.imagen}
-              titulo={mascota.titulo}
-              descripcion={mascota.descripcion}
-              fecha={mascota.fecha}
+            <img
+              src={item.image}
+              className="d-block w-100"
+              alt={item.title}
             />
 
-          </div>
+            <div className="carousel-caption">
+              <h2>{item.title}</h2>
 
+              <p>
+                {item.description}
+              </p>
+            </div>
+          </div>
         ))}
 
       </div>
 
+      <button
+        className="carousel-control-prev"
+        type="button"
+        data-bs-target={`#${id}`}
+        data-bs-slide="prev"
+      >
+        <span className="carousel-control-prev-icon"></span>
+      </button>
+
+      <button
+        className="carousel-control-next"
+        type="button"
+        data-bs-target={`#${id}`}
+        data-bs-slide="next"
+      >
+        <span className="carousel-control-next-icon"></span>
+      </button>
     </div>
   );
-}
+};
 
 export default CardCarousel;

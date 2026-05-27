@@ -1,50 +1,72 @@
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import "../../css/pages/Home.css";
 import "../../Components/molecules/CardHorizontal"
 import CardHorizontal from "../../Components/molecules/CardHorizontal";
 import "../../Components/organisms/CardCarousel"
-import CardCarousel from '../../Components/organisms/CardCarousel';
+//import CardCarousel from '../../Components/organisms/CardCarousel';
 import CardGuia from "../../Components/molecules/CardGuia";
 import Acordion from '../../Components/molecules/Acordion';
+import CarouselHorizontal from '../../Components/organisms/CarouselHorizontal';
 
 
 
 
 function Home() {
 
-    const mascotas = [
-    {
-      id: 1,
-      imagen: "https://placedog.net/500",
-      titulo: "Max",
-      descripcion: "Perrito muy juguetón responde al nombre de max, lleva perdido 1 dia",
-      fecha: "Hace 3 minutos",
-    },
+   // const carouselItems = [
+ // {
+   // image:
+     // "https://picsum.photos/1200/400?1",
+    //title: "Bienvenido",
+    //description:
+      //"Este es el primer slide",
+  //},
+  //{
+    //image:
+      //"https://picsum.photos/1200/400?2",
+    //title: "Mascotas",
+    //description:
+      //"Información de mascotas",
+  //},
+  //{
+    //image:
+      //"https://picsum.photos/1200/400?3",
+    //title: "Contáctanos",
+    //description:
+      //"Comunícate con nosotros",
+  //},
+//];
 
-    {
-      id: 3,
-      imagen: "https://placedog.net/501",
-      titulo: "Rocky",
-      descripcion: "perrito amigable con problemas de diabetes, se perdio hace 7 horas en la florida",
-      fecha: "Hace 1 hora",
-    },
 
-    {
-      id: 4,
-      imagen: "https://placedog.net/502",
-      titulo: "dios  del inframundo",
-      descripcion: "perrito jugueton se perdio cerca de los cerrillos",
-      fecha: "Hace 3 hora",
-    },
+      //<div>
+        //<CardCarousel items={carouselItems} />
+      //</div>
 
+
+
+
+      const listaMascotas = [
     {
-      id: 5,
-      imagen: "https://placedog.net/503",
-      titulo: "lucho",
-      descripcion: "perrito muy asustadizo, se perdio por culpa de los juegos artificiales ayer cerca de la victoria",
-      fecha: "Hace 1 hora",
+      imagen: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1',
+      titulo: 'Firulais buscando hogar',
+      descripcion: 'Se perdió cerca de la plaza central. Lleva collar azul.',
+      fecha: 'Perdido hace 2 días'
     },
+    {
+      imagen: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba',
+      titulo: 'Michi extraviado',
+      descripcion: 'Gato siamés de ojos azules, muy asustadizo.',
+      fecha: 'Perdido ayer'
+    },
+    {
+      imagen: 'https://placedog.net/500',
+      titulo: 'Max',
+      descripcion: 'Perrito muy juguetón responde al nombre de max, lleva perdido 1 dia',
+      fecha: 'Perdido ayer'
+    }
   ];
+
 
   const guias = [
 
@@ -145,31 +167,23 @@ const preguntas = [
             alt="gatito"
           />
         </div>
+        <div className="home-buttons-container">
+          <Link to="/reportar" className="btn-primary">
+            Reportar Mascota
+          </Link>
+          <Link to="/Buscar" className="btn-secondary">
+            Ver Mascotas
+          </Link>
       </div>
 
-              <div className="my-5" style={{width: "100vw",marginLeft: "calc(-50vw + 50%)",}}>
-          <img
-            src="https://media.istockphoto.com/id/2168279088/es/vector/estampado-de-pata-azul-y-patrón-de-corazón-sobre-fondo-claro.jpg?s=612x612&w=0&k=20&c=4qpWz_bAHOdB_v3KRRwiwqGwIdb9qerfz2cvjs5NMuc="
-            alt="Banner mascotas"
-            className="w-80 rounded"
-            style={{
-              height: "250px",
-              objectFit: "scale-down",
-            }}
-          />
-        </div>
-
-      <div className="d-flex flex-column gap-4 align-items-right">
-        {mascotas.map((mascota) => (
-          <CardHorizontal
-            key={mascota.id}
-            imagen={mascota.imagen}
-            titulo={mascota.titulo}
-            descripcion={mascota.descripcion}
-            fecha={mascota.fecha}
-          />
-        ))}
       </div>
+
+      <div className="py-5">
+        <CarouselHorizontal 
+          tituloSeccion="Casos 🚨" 
+          items={listaMascotas} 
+      />
+    </div>
 
 
         <div className="my-5" style={{width: "100vw",marginLeft: "calc(-50vw + 50%)",}}>

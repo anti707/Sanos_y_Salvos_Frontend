@@ -1,0 +1,53 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+.carta-contactanos {
+    background: rgb(219, 236, 236);
+    padding: 250px 20px;
+    border-radius: 25px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.contactanos-left,
+.contactanos-center,
+.contactanos-right {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  border-color: #222;
+}
+
+.contactanos-left {
+  align-items: flex-start;
+  gap: 12px;
+}
+.contactanos-center {
+  align-items: center;
+  gap: 12px;
+}
+.contactanos-right {
+  align-items: center;
+  gap: 10px;
+}
+.contactanos-logo {
+  width: 180px;
+  object-fit: contain;
+}
+
+.contactanos-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: #222;
+}
+
+.contactanos-link {
+  text-decoration: none;
+  font-size: 18px;
+}

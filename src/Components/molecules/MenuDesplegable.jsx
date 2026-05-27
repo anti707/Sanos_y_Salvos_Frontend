@@ -1,6 +1,8 @@
 import "../../css/Components/molecules/MascotaCard.css";
 
 
+
+
 function MenuDesplegable() {
   return (
     <div className="dropdown">
@@ -43,7 +45,7 @@ function MenuDesplegable() {
         </li>
 
         <li>
-          <a className="dropdown-item py-2" href="#">
+          <a className="dropdown-item py-2" href="/Contactanos">
             ✉️ Contáctanos
           </a>
         </li>
