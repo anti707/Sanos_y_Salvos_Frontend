@@ -166,7 +166,7 @@
 }
 
 .btn-primary {
-  background-color: #6689ef; 
+  background: linear-gradient(to top, #b3d0e8, #6f84ca); 
   color: white;
 }
 .btn-primary:hover {
@@ -174,7 +174,7 @@
 }
 
 .btn-secondary {
-  background-color: #4ed164;
+  background: linear-gradient(to top, #d4b3e8, #8e4eb1); 
   color: white;
 }
 .btn-secondary:hover {

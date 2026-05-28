@@ -47,13 +47,13 @@ function Home() {
       const listaMascotas = [
     {
       imagen: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1',
-      titulo: 'Firulais buscando hogar',
+      titulo: 'raco',
       descripcion: 'Se perdió cerca de la plaza central. Lleva collar azul.',
       fecha: 'Perdido hace 2 días'
     },
     {
       imagen: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba',
-      titulo: 'Michi extraviado',
+      titulo: 'michu',
       descripcion: 'Gato siamés de ojos azules, muy asustadizo.',
       fecha: 'Perdido ayer'
     },
