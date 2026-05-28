@@ -9,6 +9,8 @@ import Nabvar from "./Components/organisms/Navbar";
 import Footer from "./Components/organisms/Foother";
 import Contactanos from "./pages/user/Contactanos";
 import Reportar from "./pages/user/Reportar";
+import ProfilePage from "./pages/user/ProfilePage";
+import VerMascotas from "./pages/user/VerMascotas";
 //firebase
 import appFirebase from '../src/credential';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -44,7 +46,9 @@ function App() {
           <Route path="/map" element={<Map />} />
           <Route path="/contactanos" element={<Contactanos />} />
           <Route path="/reportar" element={<Reportar />} />
+          <Route path="/vermascota" element={<VerMascotas />} />
           <Route path="/profile" element={ <PrivateRoute user={user}> <Profile user={user} /> </PrivateRoute> } />
+          <Route path="/profilepage" element={ <PrivateRoute user={user}> <ProfilePage user={user} /> </PrivateRoute> } />
         </Routes>
 
         <Footer/>

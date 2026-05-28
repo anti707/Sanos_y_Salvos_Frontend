@@ -2,8 +2,6 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "../../css/pages/Home.css";
 import "../../Components/molecules/CardHorizontal"
-import CardHorizontal from "../../Components/molecules/CardHorizontal";
-import "../../Components/organisms/CardCarousel"
 //import CardCarousel from '../../Components/organisms/CardCarousel';
 import CardGuia from "../../Components/molecules/CardGuia";
 import Acordion from '../../Components/molecules/Acordion';
@@ -171,7 +169,7 @@ const preguntas = [
           <Link to="/reportar" className="btn-primary">
             Reportar Mascota
           </Link>
-          <Link to="/Buscar" className="btn-secondary">
+          <Link to="/vermascota" className="btn-secondary">
             Ver Mascotas
           </Link>
       </div>

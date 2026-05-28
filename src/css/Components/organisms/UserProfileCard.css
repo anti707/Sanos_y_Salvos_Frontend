@@ -1,0 +1,42 @@
+/* La tarjeta contenedora de datos */
+.user-profile-card {
+  background-color: #ffffff !important;
+  border-radius: 20px !important;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* El círculo de la foto */
+.avatar-profile-container {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  border: 4px solid #e1e3f1; 
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-img-fluid {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Cuadros de información */
+.info-profile-item {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #f0f2f5;
+  height: 100%; /* Asegura que todas las cajitas midan lo mismo */
+}
+
+.italic-bio {
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.btn-success:hover {
+  background-color: #3cb352 !important;
+}

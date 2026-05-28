@@ -21,7 +21,7 @@ function MenuDesplegable() {
         aria-labelledby="dropdownMenuButton"
       >
         <li>
-          <a className="dropdown-item py-2" href="#">
+          <a className="dropdown-item py-2" href="/ProfilePage">
             👤 Mi perfil
           </a>
         </li>
