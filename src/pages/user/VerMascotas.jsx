@@ -11,14 +11,14 @@ function VerMascotas() {
             titulo: "Rocky",
             descripcion: "poodle perdido en el parque central, lleva collar rojo, tiene problmas de visión y es muy asustadizo",
             imagen: 'https://placedog.net/505',
-            actualizacion: "Actualizado hace 3 min"
+            actualizacion: "publicado hace 3 min"
         },
         {
             id: 2,
             titulo: "canela",
             descripcion: "perritta raza pequeña, se perdio cerca del parque cerrillos al escuchar fuegos artificiales, por favor contactarme si lo a visto.",
             imagen: 'https://placedog.net/506',
-            actualizacion: "Actualizado ayer"
+            actualizacion: "publicado ayer"
         },
         {
             id: 3,
