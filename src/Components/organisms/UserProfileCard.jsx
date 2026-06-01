@@ -1,7 +1,10 @@
-
-import '../../css/Components/organisms/UserProfileCard.css';
+import { useNavigate } from 'react-router-dom';
+import { auth} from '../../credential';
+import { signOut } from "firebase/auth";
+import "../../css/Components/organisms/UserProfileCard.css";
 
 const UserProfileCard = ({ userData, onBack, onEdit }) => {
+  const navigate = useNavigate();
   // Controlamos que si no vienen datos, muestre un estado de carga sutil
   if (!userData) {
     return (
@@ -12,6 +15,15 @@ const UserProfileCard = ({ userData, onBack, onEdit }) => {
       </div>
     );
   }
+
+  const handleLogout = async () => {
+        try {
+          await signOut(auth);
+          navigate("/login");
+        } catch (error) {
+          console.error("Error al cerrar sesión:", error);
+        }
+      };
 
   return (
     <div className="card shadow-sm border-0 p-4 user-profile-card">
@@ -88,6 +100,9 @@ const UserProfileCard = ({ userData, onBack, onEdit }) => {
             Editar Mis Datos
           </button>
         )}
+        <button onClick={handleLogout} className="logout-button">
+          Cerrar sesión
+        </button>
       </div>
 
     </div>

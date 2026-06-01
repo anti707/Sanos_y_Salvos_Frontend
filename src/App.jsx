@@ -11,6 +11,7 @@ import Contactanos from "./pages/user/Contactanos";
 import Reportar from "./pages/user/Reportar";
 import ProfilePage from "./pages/user/ProfilePage";
 import VerMascotas from "./pages/user/VerMascotas";
+import Registro from "./pages/data/Register";
 //firebase
 import appFirebase from '../src/credential';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -38,10 +39,10 @@ function App() {
       <main>
 
         <Nabvar/>
-
         <Routes>
           <Route path="/" element={ <PrivateRoute user={user}>  <Home user={user} /> </PrivateRoute> } />
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
           <Route path="/apoyanos" element={<Apoyanos />} />
           <Route path="/map" element={<Map />} />
           <Route path="/contactanos" element={<Contactanos />} />
@@ -50,8 +51,8 @@ function App() {
           <Route path="/profile" element={ <PrivateRoute user={user}> <Profile user={user} /> </PrivateRoute> } />
           <Route path="/profilepage" element={ <PrivateRoute user={user}> <ProfilePage user={user} /> </PrivateRoute> } />
         </Routes>
-
         <Footer/>
+        
       </main>
 
   );

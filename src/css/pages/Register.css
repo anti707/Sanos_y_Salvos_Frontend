@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box
 }
-.login-page {
+.Register-page {
    width: 100%;
     padding-top: 5px;
     text-align: center;
@@ -11,7 +11,7 @@
     max-width: 100%; 
 }
 
-.login-card {
+.Register-card {
     justify-content: first baseline !important;
     place-items: initial;
     align-items: center;
@@ -24,7 +24,7 @@
     border: 76px unset #f9ecfc;
 
 }
-.login-btn {
+.Register-btn {
     width: 100%;
     padding: 10px;
     background: #4dbfb0;
@@ -36,12 +36,12 @@
     margin-top: 15px;
 }
 
-.login-btn:hover {
+.Register-btn:hover {
     background: #285c5b;
 }
 
 /* Centra la tarjeta completa en la pantalla */
-.login-page {
+.Register-page {
     min-height: 100%;
     display: flex;
     justify-content: center;
@@ -50,7 +50,7 @@
 }
 
 /* El contenedor mágico que parte la pantalla en dos */
-.login-split-container {
+.Register-split-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
@@ -63,7 +63,7 @@
 }
 
 /* Lado Izquierdo: Imagen */
-.login-image {
+.Register-image {
     background-color: #e6f7f4; 
     display: flex;
     justify-content: center;
@@ -73,7 +73,7 @@
     padding: 0;
 }
 
-.login-image img {
+.Register-image img {
     width: 100%;
     height: 100%;     
     object-fit: cover; 
@@ -81,7 +81,7 @@
 }
 
 /* Lado Derecho: Formulario */
-.login-form-side {
+.Register-form-side {
     display: flex;
     flex-direction: column;
     justify-content: center; 
@@ -91,23 +91,26 @@
     width: 100%;
 }
 
-.login-card {
+.Register-card {
     width: 100%;
-    max-width: 360px;       
-    display: flex;
-    flex-direction: column;
-    gap: 15px;               
+    max-width: 480px; /* Un poco más ancho para que quepan dos columnas cómodas */
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
+    max-height: none;    /* Quitamos el límite de altura */
+    overflow-y: visible; /* Espacio de cortesía para la barra de desplazamiento */
 }
 
 
-.register-toggle {
+.register-togglee {
     margin-top: 20px;
     text-align: center;
     font-size: 0.9rem;
     color: #555;
 }
 
-.btn-switch {
+.btn-switchh {
     background: none;
     border: none;
     color: #4dbfb0;
@@ -117,8 +120,7 @@
     padding: 0;
     margin-left: 5px;
 }
-
-.btn-account {
+.btn-accountt {
     width: 100%;
     padding: 10px;
     background: #4dbfb0;
@@ -129,16 +131,15 @@
     cursor: pointer;
     margin-top: 15px;
 }
-.btn-account:hover {
+.btn-accountt:hover {
     background: #285c5b;
 }
 
 /*opcion para celulares*/
 @media (max-width: 768px) {
-    .login-split-container {
+    .Register-split-container {
         grid-template-columns: 1fr;
         max-width: 400px;
     }
 
 }
-

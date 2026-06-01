@@ -10,24 +10,24 @@ const ProfilePage = () => {
   const [cargando, setCargando] = useState(true);
   const navigate = useNavigate();
 
+
   useEffect(() => {
-    // 1. Escuchar si hay un usuario logueado en Firebase Auth
+    // revisa si hay un usuario logueado en Firebase Auth
     const desuscribir = onAuthStateChanged(auth, async (userFirebase) => {
       if (userFirebase) {
         try {
-          // 2. Apuntar al documento del usuario usando su UID único de Firebase
+          // Apuntar al documento del usuario usando su UID único de Firebase
           const userDocRef = doc(db, "usuarios", userFirebase.uid);
           const userDocSnap = await getDoc(userDocRef);
 
           if (userDocSnap.exists()) {
-            // 3. Guardar los datos de Firestore en nuestro estado local
+            //Guardar los datos de Firestore en nuestro estado local
             setUsuario({
               id: userDocSnap.id,
               ...userDocSnap.data()
             });
           } else {
             console.log("El usuario está autenticado pero no tiene un documento en Firestore.");
-            // Opcional: podrías poner datos por defecto de Firebase Auth
             setUsuario({
               nombre: userFirebase.displayName || "Usuario",
               correo: userFirebase.email,
@@ -40,7 +40,6 @@ const ProfilePage = () => {
           setCargando(false);
         }
       } else {
-        // Si no está logueado, redirigir a la pantalla de login
         console.log("No hay usuario activo, redirigiendo...");
         navigate('/login');
       }

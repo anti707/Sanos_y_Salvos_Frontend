@@ -1,0 +1,55 @@
+.form-clean-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Espaciado uniforme vertical */
+    text-align: left; /* Alinea los textos a la izquierda como la muestra */
+    margin-bottom: 24px;
+}
+
+/* Estructura para poner dos inputs en la misma línea */
+.form-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Mitad y mitad */
+    gap: 16px; /* Espacio entre los dos inputs hermanos */
+}
+
+/* Estructura individual de cada campo (Label + Input) */
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Estilo exacto de las etiquetas superiores de tu ejemplo */
+.input-field label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111111;
+    margin: 0;
+    padding-left: 2px;
+}
+
+/* Cajas de texto estilizadas idénticas a la muestra */
+.input-field input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px; /* Bordes redondeados elegantes tipo píldora de tu imagen */
+    font-size: 14px;
+    color: #333333;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Placeholders más suaves */
+.input-field input::placeholder {
+    color: #999999;
+}
+
+/* Efecto focus cuando el usuario escribe */
+.input-field input:focus {
+    border-color: #2cca73; /* El color verde de tu aplicación */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(44, 202, 115, 0.1);
+}
