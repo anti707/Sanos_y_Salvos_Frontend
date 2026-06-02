@@ -1,8 +1,11 @@
+import "../../css/Components/templates/FormRegister.css";
+
+
 function FormRegister({ content, onChange }) {
     return (
         <div className="form-clean-container">
             
-            {/* FILA 1: NOMBRE Y APELLIDOS JUNTOS */}
+            {/* NOMBRE Y APELLIDOS*/}
             <div className="form-row-double">
                 <div className="input-field">
                     <label>Nombre</label>
@@ -28,7 +31,7 @@ function FormRegister({ content, onChange }) {
                 </div>
             </div>
 
-            {/* FILA 2: CORREO (ANCHO COMPLETO) */}
+            {/*CORREO  */}
             <div className="input-field full-width">
                 <label>Correo electrónico</label>
                 <input
@@ -41,7 +44,7 @@ function FormRegister({ content, onChange }) {
                 />
             </div>
 
-            {/* FILA 3: FECHA DE NACIMIENTO Y DIRECCIÓN JUNTAS */}
+            {/* FECHA DE NACIMIENTO Y DIRECCIÓN */}
             <div className="form-row-double">
                 <div className="input-field">
                     <label>Fecha de nacimiento</label>
@@ -66,7 +69,7 @@ function FormRegister({ content, onChange }) {
                 </div>
             </div>
 
-            {/* FILA 4: CONTRASEÑA (ANCHO COMPLETO) */}
+            {/*CONTRASEÑA */}
             <div className="input-field full-width">
                 <label>Contraseña</label>
                 <input
