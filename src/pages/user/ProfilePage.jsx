@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from '../../credential'; // Ajusta la ruta a tu archivo firebase
+import { auth, db } from '../../credential'; 
 import { doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import UserProfileCard from '../../Components/organisms/UserProfileCard';
@@ -45,18 +45,18 @@ const ProfilePage = () => {
       }
     });
 
-    return () => desuscribir(); // Limpiamos el listener al desmontar el componente
+    return () => desuscribir();
   }, [navigate]);
 
   const handleVolver = () => {
-    navigate('/home'); // O la ruta de tu inicio
+    navigate('/home'); //
   };
 
   const handleEditar = () => {
-    navigate('/perfil/editar'); // O abrir un modal de edición
+    navigate('/perfil/editar');
   };
 
-  // Mientras se conecta a Firebase, mostramos una pantalla de carga limpia
+  //pantalla de carga limpia
   if (cargando) {
     return (
       <div className="container py-5 text-center text-secondary">
@@ -68,7 +68,7 @@ const ProfilePage = () => {
 
   return (
     <div className="container py-5">
-      {/* 4. Le pasamos los datos reales traídos de Firebase a nuestro organismo */}
+      {/*datos reales traídos de Firebase*/}
       <UserProfileCard 
         userData={usuario} 
         onBack={handleVolver} 
