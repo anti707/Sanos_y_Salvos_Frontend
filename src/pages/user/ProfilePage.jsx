@@ -1,14 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../../credential'; 
 import { doc, getDoc } from 'firebase/firestore';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 import UserProfileCard from '../../Components/organisms/UserProfileCard';
+
 
 const ProfilePage = () => {
   const [usuario, setUsuario] = useState(null);
   const [cargando, setCargando] = useState(true);
   const navigate = useNavigate();
+
+
+  const handleCerrarSesion = async () => {
+    try {
+        await signOut(auth); 
+        alert("Sesión cerrada correctamente");
+        navigate('/login'); // Redirige al login automáticamente tras salir
+    } catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
+};
 
 
   useEffect(() => {
@@ -70,9 +82,10 @@ const ProfilePage = () => {
     <div className="container py-5">
       {/*datos reales traídos de Firebase*/}
       <UserProfileCard 
-        userData={usuario} 
-        onBack={handleVolver} 
-        onEdit={handleEditar} 
+        userData={usuario}
+        onBack={handleVolver}
+        onEdit={handleEditar}
+        onLogout={handleCerrarSesion}
       />
     </div>
   );
