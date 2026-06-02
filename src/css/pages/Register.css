@@ -11,19 +11,6 @@
     max-width: 100%; 
 }
 
-.Register-card {
-    justify-content: first baseline !important;
-    place-items: initial;
-    align-items: center;
-    width: 100%;
-    max-width: 500px;
-    background: #fff;
-    border-radius: 25px;
-    padding: 110px 120px;
-    box-shadow: 0 0 25px rgba(222, 214, 255, 0.35);
-    border: 76px unset #f9ecfc;
-
-}
 .Register-btn {
     width: 100%;
     padding: 10px;
@@ -49,7 +36,7 @@
     padding: 20px;
 }
 
-/* El contenedor mágico que parte la pantalla en dos */
+/* El contenedor que parte la pantalla en dos */
 .Register-split-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -62,7 +49,7 @@
     min-height: 600px;
 }
 
-/* Lado Izquierdo: Imagen */
+/*Imagen */
 .Register-image {
     background-color: #e6f7f4; 
     display: flex;
@@ -80,7 +67,7 @@
     object-position: center;
 }
 
-/* Lado Derecho: Formulario */
+/*Formulario */
 .Register-form-side {
     display: flex;
     flex-direction: column;
@@ -93,13 +80,12 @@
 
 .Register-card {
     width: 100%;
-    max-width: 480px; /* Un poco más ancho para que quepan dos columnas cómodas */
+    max-width: 480px;
     background: #ffffff;
     padding: 30px;
-    border-radius: 16px;
+    border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.04);
-    max-height: none;    /* Quitamos el límite de altura */
-    overflow-y: visible; /* Espacio de cortesía para la barra de desplazamiento */
+    max-height: none;    
 }
 
 
