@@ -82,6 +82,7 @@
 
 /* Lado Derecho: Formulario */
 .login-form-side {
+    font-family: serif;
     display: flex;
     flex-direction: column;
     justify-content: center; 

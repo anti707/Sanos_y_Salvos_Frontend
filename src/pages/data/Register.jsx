@@ -62,7 +62,7 @@ const Register = () => {
                 
                 <div className="Register-image">
                     <img 
-                        src="https://statics.launion.digital/2023/12/658e325bd4f16.jpg" 
+                        src="https://seguros.elcorteingles.es/content/dam/eci-seguros/es/blog/blog-julio-2023/incluir-mascota-seguro-hogar.jpg" 
                         alt="Mascotas Sanos y Salvos" 
                     />
                 </div>

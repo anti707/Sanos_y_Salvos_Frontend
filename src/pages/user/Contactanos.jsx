@@ -14,7 +14,7 @@ function Contactanos() {
                 <Text className="contactanos-text">Contactos</Text>
                 <h2 className="contactanos-link">Numero: +569 89764598</h2>
                 <h2 className="contactanos-link">gmail:Sanos&salvos@gmail.com</h2>
-                <h2 className="contactanos-link">Precencial:av.central 567</h2>
+                <h2 className="contactanos-link">Presencial:av.central 567</h2>
             </div>
 
             <div className="contactanos-center">

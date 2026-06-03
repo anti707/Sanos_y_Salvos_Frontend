@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 import Home from "./pages/user/Home";
 import Login from "./pages/data/Login";
 import Apoyanos from "./pages/user/Apoyanos";
@@ -17,12 +18,23 @@ import appFirebase from '../src/credential';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 const auth = getAuth(appFirebase);
 
-function PrivateRoute({ user, children }) {
-  if (!user) return <Login />; // Si no hay usuario, redirige a login no olvidar 
-  return children; // Si hay usuario, renderiza el componente
-}
+
 
 function App() {
+
+  //FUNCION PARA  QUE TODAS LAS PAGINAS TENGAN EL NAVBAR Y EL FOOTER MENOS LOGIN Y REGISTRO
+  const MainLayout = ({ user }) => {
+    return (
+        <>
+            <Nabvar user={user} />
+            
+            <Outlet /> 
+
+            <Footer />
+        </>
+    );
+};
+
 
   const [user, setUser] = useState(null);
 
@@ -38,20 +50,25 @@ function App() {
   return (
       <main>
 
-        <Nabvar/>
+
         <Routes>
-          <Route path="/" element={ <PrivateRoute user={user}>  <Home user={user} /> </PrivateRoute> } />
+
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
-          <Route path="/apoyanos" element={<Apoyanos />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/contactanos" element={<Contactanos />} />
-          <Route path="/reportar" element={<Reportar />} />
-          <Route path="/vermascota" element={<VerMascotas />} />
-          <Route path="/profile" element={ <PrivateRoute user={user}> <Profile user={user} /> </PrivateRoute> } />
-          <Route path="/profilepage" element={ <PrivateRoute user={user}> <ProfilePage user={user} /> </PrivateRoute> } />
+
+            <Route element={<MainLayout user={user} />}>
+                <Route path="/" element={<Home/>} />
+                <Route path="/apoyanos" element={<Apoyanos />} />
+                <Route path="/map" element={<Map />} />
+                <Route path="/contactanos" element={<Contactanos />} />
+                <Route path="/reportar" element={<Reportar />} />
+                <Route path="/vermascota" element={<VerMascotas />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/profilepage" element={<ProfilePage/>} />
+            </Route>
         </Routes>
-        <Footer/>
+
+
         
       </main>
 
