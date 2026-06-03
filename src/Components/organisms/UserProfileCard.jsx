@@ -37,7 +37,7 @@ function UserProfileCard({ userData, onBack, onEdit, onLogout }) {
                 </div>
 
                 <div className="info-card-item">
-                    <span className="item-label">Ubicación principal</span>
+                    <span className="item-label">Direccion</span>
                     <strong className="item-value">{userData.direccion || "No especificada"}</strong>
                 </div>
 

@@ -49,19 +49,25 @@ function Home() {
       imagen: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1',
       titulo: 'raco',
       descripcion: 'Se perdió cerca de la plaza central. Lleva collar azul.',
-      fecha: 'Perdido hace 2 días'
+      fecha: '3 horas'
     },
     {
       imagen: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba',
       titulo: 'michu',
       descripcion: 'Gato siamés de ojos azules, muy asustadizo.',
-      fecha: 'Perdido ayer'
+      fecha: '1 hora'
     },
     {
       imagen: 'https://placedog.net/500',
       titulo: 'Max',
       descripcion: 'Perrito muy juguetón responde al nombre de max, lleva perdido 1 dia',
-      fecha: 'Perdido ayer'
+      fecha: 'ayer'
+    },
+    {
+      imagen: 'https://placedog.net/501',
+      titulo: 'eduard',
+      descripcion: 'Perrito muy juguetón pero asustadizo, lo hemos buscado por toda la comuna de p.a.c. pero nada, lleva perdido 2 dias',
+      fecha: '3 minutos'
     }
   ];
 
@@ -126,24 +132,24 @@ function Home() {
 
 const preguntas = [
     {
-      titulo: "¿Como luchar con la ansiedad de perder una mascota?",
+      titulo: "¿Como funciona la geolocalizacion?",
       descripcion:
-        "Busca en los alrededores, avisa a vecinos y publica fotos recientes.",
+        "En nuestra pagina la geolocalizacion es una herramienta sumamente util para la busqueda de las mascotas, ya que se puede indicar en donde se ha perdido o donde se ha visto la mascota.",
     },
     {
-      titulo: "¿Cómo actuar en una emergencia veterinaria?",
+      titulo: "¿Por que deberia realizar una donacion?",
       descripcion:
-        "Mantén la calma y contacta rápidamente a un veterinario cercano.",
+        "En este caso es completamente voluntario el apoyo que desea realizar, sin embargo al realizarlo estara ayudando a mejorar nuestros servicios para ser mas eficaces en la busqueda de las mascotas perdidas.",
     },
     {
-      titulo: "¿Cómo ayudar a una mascota con ansiedad?",
+      titulo: "¿Cómo puedo ayudar a otras familias?",
       descripcion:
-        "Crea un ambiente tranquilo y mantén rutinas estables.",
+        "Excelente pregunta, puedes compartir información sobre mascotas perdidas, colaborar en búsquedas o donar recursos, tambien estando pendiente de los nuevos casos que han aparecido tomando todo esto en cuenta podremos colaborar entre todos para una busqueda mas eficaz.",
     },
     {
-      titulo: "¿Cómo calmar mi ansiedad por la perdida?",
+      titulo: "¿Recibo algun tipo de recompensa al ayudar?",
       descripcion:
-        "Crea un ambiente tranquilo, respira hondo, intenta distraerte.",
+        "No, al ayudar estara contribuyendo a una causa noble y sin fines de lucro a menos que la familia dela mascota este ofreciendo cierta recompensa, de parte de nuestra pagina recibira la satisfaccion de haber ayudado a un animalito para re encontrarse con su familia y poniendoles a salvo, no estamos de acuerdo en ofrecer ningun bien monetario para evitar cualquier tipo de intercambio comercial.",
     },
     
   ];

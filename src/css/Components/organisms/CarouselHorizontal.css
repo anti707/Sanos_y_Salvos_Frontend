@@ -23,13 +23,13 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(33, 37, 41, 0.8);
+  background-color: rgba(113, 113, 113, 0.8);
   color: #fff;
-  border: 1px solid #444;
+  border: 1px solid #9f9f9f;
   font-size: 2rem;
   width: 45px;
   height: 45px;
-  border-radius: 50%;
+  border-radius: 60%;
   cursor: pointer;
   z-index: 10;
   display: flex;
@@ -38,9 +38,9 @@
   transition: all 0.2s ease;
 }
 .carousel-control-btn:hover {
-  background-color: #e1e3f1;
-  border-color: #31287d;
-  color: #000;
+  background-color: rgba(14, 14, 14, 0.8);
+  border-color: #6a6a6a;
+  color: #e4e4e4;
 }
 .prev-arrow {
   left: -20px;

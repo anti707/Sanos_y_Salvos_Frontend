@@ -12,15 +12,15 @@ const ProfilePage = () => {
   const navigate = useNavigate();
 
 
-  const handleCerrarSesion = async () => {
-    try {
-        await signOut(auth); 
-        alert("Sesión cerrada correctamente");
-        navigate('/login'); // Redirige al login automáticamente tras salir
-    } catch (error) {
-        console.error("Error al cerrar sesión:", error);
-    }
-};
+      const handleCerrarSesion = async () => {
+        try {
+            await signOut(auth); 
+            alert("Sesión cerrada correctamente");
+            navigate('/login'); // Redirige al login automáticamente tras salir
+        } catch (error) {
+            console.error("Error al cerrar sesión:", error);
+        }
+    };
 
 
   useEffect(() => {
@@ -58,15 +58,15 @@ const ProfilePage = () => {
     });
 
     return () => desuscribir();
-  }, [navigate]);
+      }, [navigate]);
 
-  const handleVolver = () => {
-    navigate('/home'); //
-  };
+      const handleVolver = () => {
+        navigate('/'); //
+      };
 
-  const handleEditar = () => {
-    navigate('/perfil/editar');
-  };
+      const handleEditar = () => {
+        navigate('/perfil/editar');
+      };
 
   //pantalla de carga limpia
   if (cargando) {
