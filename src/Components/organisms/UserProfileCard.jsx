@@ -11,7 +11,7 @@ function UserProfileCard({ userData, onBack, onEdit, onLogout }) {
             <div className="profile-header">
                 <div className="avatar-wrapper">
                     <img 
-                        src={userData.foto || "https://via.placeholder.com/150"} 
+                        src={userData.foto || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150"} 
                         alt="Avatar de Usuario" 
                         className="profile-avatar"
                     />

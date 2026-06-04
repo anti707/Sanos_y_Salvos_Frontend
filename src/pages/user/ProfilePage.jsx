@@ -43,7 +43,7 @@ const ProfilePage = () => {
             setUsuario({
               nombre: userFirebase.displayName || "Usuario",
               correo: userFirebase.email,
-              foto: userFirebase.photoURL || "https://via.placeholder.com/150"
+              foto: userFirebase.photoURL || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150"
             });
           }
         } catch (error) {
