@@ -1,38 +1,38 @@
-import Image from "../atoms/Image";
-import Text from "../atoms/Text";
-import Button from "../atoms/Button";
-import PetStatus from "../molecules/PetStatus";
-import BodyCard from "../molecules/BodyCard";
-import "../../css/PetCard.css";
-
+import React from 'react';
 
 function PetCard({
     imagen,
-    nombre,
-    direccion,
-    fecha,
+    titulo,
     descripcion,
-    estado,
-    boton
+    ultimaActualizacion,
+    altImagen
 }) {
     return (
-        <div className="pet-card">
-            <div className="pet-imagen">
-                <Image src={imagen} alt={nombre} />
+        
+            <div className="card mb-3">
+                {imagen && (
+                    <img 
+                        src={imagen} 
+                        className="card-img-top" 
+                        alt={altImagen} 
+                    />
+                )}
+                
+                    <div className="card-body">
+                        {titulo && <h5 className="card-title">{titulo}</h5>}
+                        
+                        {descripcion && <p className="card-text">{descripcion}</p>}
+                        
+                        {ultimaActualizacion && (
+                            <p className="card-text">
+                                <small className="text-body-secondary">
+                                    {ultimaActualizacion}
+                                </small>
+                            </p>
+                        )}
+                    </div>
             </div>
-            
-            <BodyCard className="pet-info">
-                <Text variant="h2">{nombre}</Text>
-                <Text>{direccion}</Text>
-                <Text>{fecha}</Text>
-                <Text>{descripcion}</Text>
-                <PetStatus status={estado} />
-            </BodyCard>
-            <div className="pet-boton">
-                <Button>{boton}</Button>
-            </div>
-
-        </div>
+        
     );
 }
 

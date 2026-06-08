@@ -1,0 +1,11 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+.VerMascotas-container {
+    width: 100%;
+    padding-top: 40px;
+    text-align: center;
+    max-width: 100%; 
+}

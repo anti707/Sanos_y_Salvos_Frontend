@@ -1,4 +1,5 @@
 .navbar-container {
+  font-family: serif;
   width: 100%;
   background: #e6f7f9;
   border-bottom: 1px solid #5eb4c3;
@@ -40,13 +41,13 @@
 .nav-menu {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 35px;
   flex: 1;
 }
 
 .nav-link {
-  color: #333 !important;
+  color: #7e7e7e !important;
   text-decoration: none;
   padding: 4px 10px;
   transition: 0.3s ease;

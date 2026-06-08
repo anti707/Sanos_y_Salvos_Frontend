@@ -1,92 +1,76 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Forms from "../../Components/templates/Forms"
-import "../../css/pages/Login.css";
-import "../../css/Components/organisms/Navbar.css";
-//FireBase
-import appFirebase from "../../credential";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-
-const auth = getAuth(appFirebase);
+import { auth } from "../../credential"; // Ajusta tu ruta
+import { signInWithEmailAndPassword } from "firebase/auth"; //
+import Forms from "../../Components/templates/Forms"; //
+import "../../css/pages/Login.css"; //
 
 const Login = () => {
-    const navigate = useNavigate();
-    const [form, setForm] = useState({
-        correo: "",
-        contrasena: ""
-    });
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        setForm({
-            correo: "",
-            contrasena: ""
-        });
-    };
-
-    const [ register, setRegister ] = useState(false);
-
-      const functAuth = async(e) => {
-        e.preventDefault();
-        const { correo, contrasena } = form;
-
-        if(register){
-            try {
-                await createUserWithEmailAndPassword(auth, correo, contrasena);
-                alert("Usuario creado exitosamente");
-                navigate("/"); // <-- redirige al Home después de registrarse
-            } catch (error) {
-                alert("Error al iniciar sesión: " + error.message);
-                console.error("Error al crear el usuario:", error);
-            }
-        } else {
-            try {
-                await signInWithEmailAndPassword(auth, correo, contrasena);
-                alert("Inicio de sesión exitoso");
-                navigate("/"); // <-- redirige al Home después de login
-            } catch (error) {
-                alert("Error al iniciar sesión: " + error.message);
-                console.error("Error al iniciar sesión:", error);
-            }
-        }
-    }
+    const navigate = useNavigate(); //
+    const [form, setForm] = useState({ correo: "", contrasena: "" }); //
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value } = e.target; //
+        setForm((prev) => ({ ...prev, [name]: value })); //
+    };
 
-        setForm((prev) => ({
-        ...prev,
-        [name]: value
-        }));
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        const { correo, contrasena } = form; //
+
+        try {
+            await signInWithEmailAndPassword(auth, correo, contrasena); //
+            alert("¡Inicio de sesión exitoso!"); //
+            navigate("/"); //
+        } catch (error) {
+            alert("Error al iniciar sesión: " + error.message); //
+            console.error("Error en Login:", error); //
+        }
     };
 
     return (
         <main className="login-page">
+            <div className="login-split-container">
+                
+                {/* LADO IZQUIERDO: Imagen */}
+                <div className="login-image">
+                    <img 
+                        src="https://media.istockphoto.com/id/1845512061/es/foto/lindos-gatos-y-perros-domésticos-de-varios-colores-corren-por-un-prado-soleado-de-verano.jpg?b=1&s=1024x1024&w=0&k=20&c=pzhdxr6SKWpgdZQw8k9fKyp-1YblvI9G2-F578tGlvc=" 
+                        alt="Mascotas Sanos y Salvos" 
+                    />
+                </div>
+                
+                {/* LADO DERECHO: Formulario */}
+                <div className="login-form-side">
+                    <div className="login-header">
+                        <h1 className="login-title">Iniciar Sesión</h1>
+                    </div>
 
-            
-                    <h1>iniciar sesion</h1>
-                <div className="login-header">
-            <form onSubmit={functAuth} className="login-card">
-                <Forms content={form} onChange={handleChange} />
-                    <button className="btn-account" type="submit">
-                        {register ? "Registrarse" : "Iniciar Sesion"}
-                    </button>
-                    <h2>
-                        {register ? "Si ya tienes cuenta" : "No tienes cuenta"} 
-                        <button onClick={() => setRegister(!register)}>
-                            {register ? "Inicia Sesion" : "Registrate"}
-                        </button>
-                    </h2>
-            </form>
-                    
+                    <div className="login-card">
+                        <form onSubmit={handleLogin}>
+                            <Forms content={form} onChange={handleChange} />
+                            
+                            <button className="btn-account" type="submit">
+                                Iniciar Sesión
+                            </button>
+                            
+                            <div className="register-toggle">
+                                <span>¿No tienes cuenta? </span>
+                                <button 
+                                    type="button" 
+                                    onClick={() => navigate("/registro")} // Te lleva a la nueva página
+                                    className="btn-switch"
+                                >
+                                    Regístrate
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
-
+            </div>
         </main>
     );
 };
-
 
 export default Login;

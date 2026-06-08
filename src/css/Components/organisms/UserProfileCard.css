@@ -1,0 +1,148 @@
+/* Contenedor central de la tarjeta */
+.profile-card-container {
+    width: 100%;
+    max-width: 650px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+    font-family: serif;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.avatar-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #f4f6f8;
+    border: 3px solid #2cc2ca;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1a202c;
+    text-transform: capitalize;
+    margin: 0;
+}
+
+/* Línea divisoria */
+.profile-divider {
+    border: 0;
+    height: 1px;
+    background: #dce4f0;
+    margin: 25px 0;
+}
+
+
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+
+.info-card-item {
+    background: #f7fafe;
+    padding: 16px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    border: 1px solid #edf2f7;
+}
+
+.item-label {
+    font-size: 13px;
+    color: #718096;
+    font-weight: 500;
+}
+
+.item-value {
+    font-size: 15px;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* Contenedor de Botones alineados*/
+.profile-actions-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Estilo base para los botones */
+.btn-profile {
+    padding: 11px 22px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.btn-profile-back {
+    background-color: #683a9b;
+    color: #ffffff;
+}
+.btn-profile-back:hover {
+    background-color: #3c2770;
+}
+
+
+.btn-profile-edit {
+    background-color: #2ccab0;
+    color: #ffffff;
+}
+.btn-profile-edit:hover {
+    background-color: #20998d;
+    box-shadow: 0px 4px 12px rgba(44, 202, 115, 0.2);
+}
+
+/* Botón Cerrar Sesión */
+.btn-profile-logout {
+    background-color: #cc3838;
+    color: #ffffff;
+}
+.btn-profile-logout:hover {
+    background-color: #922727;
+    box-shadow: 0px 4px 12px rgba(229, 62, 62, 0.2);
+}
+
+/* Adaptación para pantallas de celulares */
+@media (max-width: 550px) {
+    .profile-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-actions-row {
+        flex-direction: column;
+        width: 100%;
+    }
+    .btn-profile {
+        width: 100%;
+    }
+}

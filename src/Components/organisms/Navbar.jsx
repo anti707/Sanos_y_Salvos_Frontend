@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "../../css/Components/organisms/Navbar.css";
 import BarraBusqueda from "../molecules/BarraBusqueda";
 import logo from "../../assets/logo.png";
+import "../molecules/MenuDesplegable"
+import MenuDesplegable from "../molecules/MenuDesplegable";
 
 function Navbar({ links =[]}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,57 +71,14 @@ function Navbar({ links =[]}) {
         <div className="nav-right">
           <BarraBusqueda onBuscar={(query) => navigate(`/search?q=${query}`)} />
 
-           {!user ? (
-            <button className="btn-account" onClick={goToProfile}>
-              Mi Cuenta
-            </button>
-          ) : (
-            <button className="btn-logout" onClick={handleLogout}>
-              Cerrar Sesión
-            </button>
-          )}
         </div>
-        <button className="btn-account" onClick={goToapoyanos}>
-              apoyanos
-            </button>
+        
 
-            <button className="btn-account" onClick={goTomap}>
-              Mapa
-            </button>
+            <MenuDesplegable/>
 
-          <div className="nav-toggle" onClick={() => setIsOpen(!isOpen)}>
-            ☰
-          </div>
           </div>
           </div>
 
-      <div className={`nav-mobile ${isOpen ? "open" : ""}`}>
-        {links.map((link, i) => (
-          <NavLink
-            key={i}
-            to={link.to}
-            onClick={(e) => handleLinkClick(e, link)}
-            className="nav-mobile-link"
-          >
-            {link.label}
-          </NavLink>
-        ))}
-
-        {user && (
-          <p className="nav-mobile-user">Hola, {user.nombreUsuario}</p>
-        )}
-
-        {!user ? (
-          <button className="nav-mobile-btn" onClick={goToProfile}>
-            Mi Cuenta
-          </button>
-        ) : (
-          <button className="nav-mobile-btn" onClick={handleLogout}>
-            Cerrar Sesión
-          </button>
-        )}
-
-      </div>
     </nav>
   );
 };

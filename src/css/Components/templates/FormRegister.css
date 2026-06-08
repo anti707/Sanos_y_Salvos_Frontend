@@ -1,0 +1,54 @@
+.form-clean-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+
+.form-row-double {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 26px; /* Espacio entre los campos */
+}
+
+/* Estructura individual de cada campo (Label + Input) */
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.input-field label {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111111;
+    margin: 0;
+    padding-left: 2px;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #dcdcdc;
+    border-radius: 1px;
+    font-size: 16px;
+    color: #676767;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+
+.input-field input::placeholder {
+    color: #bbbbbb;
+}
+
+
+.input-field input:focus {
+    border-color: #2cca73;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 208, 122, 0.1);
+}

@@ -1,5 +1,3 @@
-
- 
 function Forms({ content, onChange}) {
 
   return (
