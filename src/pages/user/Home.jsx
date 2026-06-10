@@ -2,7 +2,6 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "../../css/pages/Home.css";
 import "../../Components/molecules/CardHorizontal"
-//import CardCarousel from '../../Components/organisms/CardCarousel';
 import CardGuia from "../../Components/molecules/CardGuia";
 import Acordion from '../../Components/molecules/Acordion';
 import CarouselHorizontal from '../../Components/organisms/CarouselHorizontal';
@@ -11,38 +10,6 @@ import CarouselHorizontal from '../../Components/organisms/CarouselHorizontal';
 
 
 function Home() {
-
-   // const carouselItems = [
- // {
-   // image:
-     // "https://picsum.photos/1200/400?1",
-    //title: "Bienvenido",
-    //description:
-      //"Este es el primer slide",
-  //},
-  //{
-    //image:
-      //"https://picsum.photos/1200/400?2",
-    //title: "Mascotas",
-    //description:
-      //"Información de mascotas",
-  //},
-  //{
-    //image:
-      //"https://picsum.photos/1200/400?3",
-    //title: "Contáctanos",
-    //description:
-      //"Comunícate con nosotros",
-  //},
-//];
-
-
-      //<div>
-        //<CardCarousel items={carouselItems} />
-      //</div>
-
-
-
 
       const listaMascotas = [
     {

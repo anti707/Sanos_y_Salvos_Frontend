@@ -20,23 +20,6 @@ function Navbar({ links =[]}) {
     }
   };
 
-    const goToProfile = () => {
-    navigate("/profile");
-  };
-
-   const goToapoyanos = () => {
-    navigate("/apoyanos");
-  };
-
-  const goTomap = () => {
-    navigate("/map");
-  };
-
-  const handleLogout = () => {
-  localStorage.removeItem("user");
-  navigate("/login");
-  };
-
 
   return (
     <nav className="navbar-container">
