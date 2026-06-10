@@ -31,3 +31,26 @@
     margin-bottom: 40px;
     
 }
+.apoyanos-boton{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-family: serif;
+}
+.btn-primary{
+    background-color: #2a828c;
+    color: rgb(255, 255, 255);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.apoyanos-nosotros{
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 22px 30px;
+    background: rgba(246, 247, 247, 0.6);
+    border-radius: 25px;
+    text-align: center;
+    margin-bottom: 40px;
+    
+}
