@@ -127,7 +127,7 @@ const preguntas = [
 
 
       <div className="home-box">
-        <h1 className="home-title">guellitas de camino a casa</h1>
+        <h1 className="home-title">Guellitas de camino a casa</h1>
         <h2 className="home-sub">
           Somos una agrupacion que vela por el bienestar de tu mascota y la de todos procurando que vuelvan seguros a su hogar,
           notificanos sobre tu perdida a nosotros y a miles de vecinos que desean aportar con esta buena causa.
