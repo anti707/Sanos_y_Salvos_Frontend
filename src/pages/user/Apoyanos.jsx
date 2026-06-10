@@ -32,7 +32,7 @@ function Apoyanos() {
         <h1 className="apoyanos-title">¡Quiero apoyar!</h1>
         <div className="apoyanos-boton">
           <Link to="/contactanos" className="btn-primary">
-            Contactanos
+            AYUDANOS A QUE VUELVAN A CASA
           </Link>
         </div>
       </div>
