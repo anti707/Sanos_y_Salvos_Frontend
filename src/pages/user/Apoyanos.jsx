@@ -20,8 +20,10 @@ function Apoyanos() {
         </h3>
       </div>
 
-      <div className="apoyanos-cards-container">
-        <ApoyanosCard/>
+      <div className="row d-flex flex-row flex-wrap justify-content-center gap-3">
+        <div className="apoyanos-cards-container">
+          <ApoyanosCard/>
+        </div>
       </div>
 
 
