@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Container } from 'react-bootstrap';
 import "../../css/pages/Apoyanos.css";
 import ApoyanosCard from "../../Components/molecules/ApoyanosCard";
@@ -6,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 function Apoyanos() {
+
 
  
   return (
@@ -31,7 +31,7 @@ function Apoyanos() {
       <div className="apoyanos-nosotros">
         <h1 className="apoyanos-title">¡Quiero apoyar!</h1>
         <div className="apoyanos-boton">
-          <Link to="/contactanos" className="btn-primary">
+          <Link to="/simulador-webpay" className="btn-primary">
             AYUDANOS A QUE VUELVAN A CASA
           </Link>
         </div>
