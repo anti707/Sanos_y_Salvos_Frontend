@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { API_URL } from "../../config"; // 1. IMPORTAMOS LA URL BASE
 import { useNavigate } from "react-router-dom";
-import { auth, db } from "../../credential"; //
-import { createUserWithEmailAndPassword } from "firebase/auth"; //
+import { auth, db } from "../../credential"; 
+import { createUserWithEmailAndPassword } from "firebase/auth"; 
 import { doc, setDoc } from "firebase/firestore";
-import FormRegister from "../../Components/templates/FormRegister"; //
-import "../../css/pages/Register.css"; //
+import FormRegister from "../../Components/templates/FormRegister"; 
+import "../../css/pages/Register.css"; 
 
 const Register = () => {
     const navigate = useNavigate();
     
-    // Inicializamos el estado con todos los campos solicitados
     const [form, setForm] = useState({
         nombre: "",
         apellido: "",
@@ -29,26 +29,45 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        // Extraemos todas las variables del estado
         const { correo, contrasena, nombre, apellido, fechaNacimiento, direccion } = form;
 
         try {
             // A. Registramos al usuario en Firebase Authentication
             const infoUsuario = await createUserWithEmailAndPassword(auth, correo, contrasena);
             
-            // B. Guardamos toda la información detallada en Cloud Firestore usando su UID único
+            // B. Extraemos el token del nuevo usuario y lo respaldamos en el navegador
+            const token = await infoUsuario.user.getIdToken();
+            localStorage.setItem("token", token);
+
+            // C. Guardamos la información detallada en Cloud Firestore
             await setDoc(doc(db, "usuarios", infoUsuario.user.uid), {
-                nombre: nombre,
-                apellido: apellido,
-                correo: correo,
-                fechaNacimiento: fechaNacimiento,
-                direccion: direccion,
-                fechaRegistro: new Date().toLocaleDateString(), // Registra cuándo se unió automáticamente
-                foto: "https://via.placeholder.com/150" // Placeholder inicial
+                nombre,
+                apellido,
+                correo,
+                fechaNacimiento,
+                direccion,
+                fechaRegistro: new Date().toLocaleDateString(), 
+                foto: "https://via.placeholder.com/150" 
             });
 
-            alert("¡Usuario registrado con éxito!");
-            navigate("/"); // Redirección al Home
+            // D. NUEVO: Enviamos los datos a tu Base de Datos relacional pasando por el Gateway
+            await fetch(`${API_URL}/api/usuarios/register`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}` // El filtro del Gateway verificará este token
+                },
+                body: JSON.stringify({
+                    uid: infoUsuario.user.uid, // Mantenemos el mismo ID para cruzar datos
+                    nombre,
+                    apellido,
+                    correo,
+                    direccion
+                })
+            });
+
+            alert("¡Usuario registrado con éxito en todo el sistema!");
+            navigate("/"); 
 
         } catch (error) {
             alert("Error al registrarse: " + error.message);
