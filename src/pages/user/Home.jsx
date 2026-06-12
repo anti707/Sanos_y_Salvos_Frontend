@@ -2,7 +2,6 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "../../css/pages/Home.css";
 import "../../Components/molecules/CardHorizontal"
-//import CardCarousel from '../../Components/organisms/CardCarousel';
 import CardGuia from "../../Components/molecules/CardGuia";
 import Acordion from '../../Components/molecules/Acordion';
 import CarouselHorizontal from '../../Components/organisms/CarouselHorizontal';
@@ -11,38 +10,6 @@ import CarouselHorizontal from '../../Components/organisms/CarouselHorizontal';
 
 
 function Home() {
-
-   // const carouselItems = [
- // {
-   // image:
-     // "https://picsum.photos/1200/400?1",
-    //title: "Bienvenido",
-    //description:
-      //"Este es el primer slide",
-  //},
-  //{
-    //image:
-      //"https://picsum.photos/1200/400?2",
-    //title: "Mascotas",
-    //description:
-      //"Información de mascotas",
-  //},
-  //{
-    //image:
-      //"https://picsum.photos/1200/400?3",
-    //title: "Contáctanos",
-    //description:
-      //"Comunícate con nosotros",
-  //},
-//];
-
-
-      //<div>
-        //<CardCarousel items={carouselItems} />
-      //</div>
-
-
-
 
       const listaMascotas = [
     {
@@ -160,7 +127,7 @@ const preguntas = [
 
 
       <div className="home-box">
-        <h1 className="home-title">guellitas de camino a casa</h1>
+        <h1 className="home-title">Guellitas de camino a casa</h1>
         <h2 className="home-sub">
           Somos una agrupacion que vela por el bienestar de tu mascota y la de todos procurando que vuelvan seguros a su hogar,
           notificanos sobre tu perdida a nosotros y a miles de vecinos que desean aportar con esta buena causa.

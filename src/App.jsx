@@ -13,6 +13,7 @@ import Reportar from "./pages/user/Reportar";
 import ProfilePage from "./pages/user/ProfilePage";
 import VerMascotas from "./pages/user/VerMascotas";
 import Registro from "./pages/data/Register";
+import SimuladorWebpay from "./Components/templates/SimuladorWebpay";
 //firebase
 import appFirebase from '../src/credential';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -65,6 +66,7 @@ function App() {
                 <Route path="/vermascota" element={<VerMascotas />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/profilepage" element={<ProfilePage/>} />
+                <Route path="/simulador-webpay" element={<SimuladorWebpay />} />
             </Route>
         </Routes>
 

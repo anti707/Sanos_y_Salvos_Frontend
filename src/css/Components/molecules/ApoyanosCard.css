@@ -1,0 +1,10 @@
+.apoyanos-container {
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.custom-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px !important; 
+}

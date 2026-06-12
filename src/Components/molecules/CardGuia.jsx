@@ -19,7 +19,7 @@ function CardGuia({
             className="card-img-top"
             alt={titulo}
             style={{
-                width: "290px",
+                width: "286px",
                 height: "220px",
                 objectFit: "cover",
                 borderTopLeftRadius: "12px",
@@ -34,7 +34,7 @@ function CardGuia({
             href={link}
             target="_blank"
             rel="noreferrer"
-            className="btn btn-light px-4 py-2 rounded-pill shadow"
+            className="btn btn-light px-4 py-2 rounded-pill mt-3"
             >
             Detalles
         </a>
