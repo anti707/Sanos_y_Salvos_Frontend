@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import Text from "../atoms/Text";
-import Link from "../atoms/Link";
+import Link from "../atoms/Linktwo";
 import "../../css/Components/organisms/Foother.css";
 import logo from "../../assets/logo.png";
 
