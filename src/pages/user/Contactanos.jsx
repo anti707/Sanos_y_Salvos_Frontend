@@ -1,6 +1,6 @@
 import { Container } from 'react-bootstrap';
 import "../../css/pages/Contactanos.css";
-import Link from "../../Components/atoms/link";
+import Link from "../../Components/atoms/Linktwo";
 import Text from "../../Components/atoms/Text";
 
 function Contactanos() {
