@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../credential"; // Ajusta tu ruta
 import { signInWithEmailAndPassword } from "firebase/auth"; //
@@ -19,12 +20,30 @@ const Login = () => {
         const { correo, contrasena } = form; //
 
         try {
-            await signInWithEmailAndPassword(auth, correo, contrasena); //
-            alert("¡Inicio de sesión exitoso!"); //
-            navigate("/"); //
+            // Firebase autentica las credenciales en el cliente
+        const userCredential = await signInWithEmailAndPassword(auth, correo, contrasena); 
+        
+        // EXTRAEMOS EL ID TOKEN
+        const token = await userCredential.user.getIdToken();
+        
+        // Se guarda el token en el almacenamiento del navegador (localStorage)
+        localStorage.setItem("token", token);
+
+        // se le avisa al backend a traves de api gateway que usuario entro
+        await fetch(`${API_URL}/api/usuarios/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}` // Le pasamos el token al "guardián" del Gateway
+            },
+            body: JSON.stringify({ correo })
+        });
+
+        alert("Inicio de sesión exitoso!!!"); 
+        navigate("/");
         } catch (error) {
-            alert("Error al iniciar sesión: " + error.message); //
-            console.error("Error en Login:", error); //
+            alert("Error al iniciar sesión: " + error.message); 
+            console.error("Error en Login:", error); 
         }
     };
 
