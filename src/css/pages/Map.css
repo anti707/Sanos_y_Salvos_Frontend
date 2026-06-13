@@ -1,4 +1,5 @@
-#map { 
-    height: 180px; 
-    width: 100%;
+.contenedor-mapa {
+  margin-top: 15px;
+  height: 500px;
+  border-radius: 10px;
 }
