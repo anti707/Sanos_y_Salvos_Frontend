@@ -1,60 +1,74 @@
+import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import PasaPag from "../../Components/organisms/PasaPag";
 import PetCard from "../../Components/organisms/PetCard";
-
+import { API_URL } from "../../config"; //  url del gateway
 
 function VerMascotas() {
+  const [mascotas, setMascotas] = useState([]);
+  const [cargando, setCargando] = useState(true);
 
-  const Mascotas = [
-        {
-            id: 1,
-            titulo: "Rocky",
-            descripcion: "poodle perdido en el parque central, lleva collar rojo, tiene problmas de visión y es muy asustadizo",
-            imagen: 'https://placedog.net/505',
-            actualizacion: "publicado hace 3 min"
-        },
-        {
-            id: 2,
-            titulo: "canela",
-            descripcion: "perritta raza pequeña, se perdio cerca del parque cerrillos al escuchar fuegos artificiales, por favor contactarme si lo a visto.",
-            imagen: 'https://placedog.net/506',
-            actualizacion: "publicado ayer"
-        },
-        {
-            id: 3,
-            titulo: "raco",
-            descripcion: "es un perro de raza mediana, es muy jugueton y amable responde al nombre de raco, se esca´po hace 3 dias y nos preocuca mucho ya que toma medicamentos para sus problemas en los riñones, por favor ayudenme a encontrarlo.",
-            imagen: 'https://placedog.net/507',
-            actualizacion: "Publicado hace 2 horas"
-        }
-    ];
+  useEffect(() => {
+    const cargarMascotas = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        // petición segura al api Gateway
+        const respuesta = await fetch(`${API_URL}/api/mascotas`, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
+          }
+        });
+
+        if (!respuesta.ok) throw new Error("Error al traer mascotas");
+
+        const datos = await respuesta.json();
+        setMascotas(datos); 
+      } catch (error) {
+        console.error("Error conectando al Gateway:", error);
+      } finally {
+        setCargando(false);
+      }
+    };
+
+    cargarMascotas();
+  }, []);
    
   return (
     <Container className='VerMascotas-container'>
-          <div className="container my-5" style={{ maxWidth: '600px' }}>
-            <h1 className="mb-4 text-center">Mascotas perdidas</h1>
-            
-            {Mascotas.map((mascota) => (
-                <PetCard
-                    key={mascota.id} 
-                    titulo={mascota.titulo}
-                    descripcion={mascota.descripcion}
-                    imagen={mascota.imagen}
-                    ultimaActualizacion={mascota.actualizacion}
-                    altImagen={`Miniatura de: ${mascota.titulo}`}
-                />
-            ))}
-        </div>
+      <div className="container my-5" style={{ maxWidth: '600px' }}>
+        <h1 className="mb-4 text-center">Mascotas perdidas</h1>
+        
+        {cargando ? (
+          <p className="text-center">Cargando peluditos...</p>
+        ) : mascotas.length === 0 ? (
+          <p className="text-center">No hay reportes activos. 🐾</p>
+        ) : (
+          mascotas.map((mascota) => {
+            // saca la primera imagen si existe, o un placeholder gris
+            const imagenUrl = mascota.imagenes && mascota.imagenes.length > 0 
+              ? mascota.imagenes[0].url_imagen 
+              : 'https://via.placeholder.com/150';
 
+            return (
+              <PetCard
+                key={mascota.id} 
+                titulo={mascota.nombre}
+                descripcion={`${mascota.especie} ${mascota.raza}. Sexo: ${mascota.sexo}, Edad: ${mascota.edad} años.`}
+                imagen={imagenUrl}
+                ultimaActualizacion={`Comuna: ${mascota.comuna || 'No especificada'}`}
+                altImagen={`Foto de ${mascota.nombre}`}
+              />
+            );
+          })
+        )}
+      </div>
 
-
-
-        <div>
-            <PasaPag />
-        </div>
-
-
-
+      <div>
+        <PasaPag />
+      </div>
     </Container>
   );
 }
