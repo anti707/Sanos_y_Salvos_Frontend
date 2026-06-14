@@ -1,60 +1,81 @@
-import { Container } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PetReportForm from '../../Components/organisms/PetReportForm';
-import { API_URL } from '../../config'; // conexion a gateway
+import { API_URL } from '../../config';
 
-function Reportar(){
+const Reportar = () => {
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  const [cargando, setCargando] = useState(false);
 
-  const handlePublishData = async (data) =>{
-    try{
+  const handlePublishReport = async (datosFormulario) => {
+    setCargando(true);
+    setError(null);
+
+    try {
       const token = localStorage.getItem("token");
+      if (!token) throw new Error("No tienes una sesión activa. Por favor, inicia sesión.");
 
-      // body readaptado en base al controller de api
-      const payload = {
-        nombre: data.nombre,
-        especie: data.especie,
-        raza: data.raza,
-        sexo: data.sexo,
-        edad: parseInt(data.edad) || 0, // para asegurar num entero
-        latitud: -33.345, // coordenadas de prueba
-        longitud: -70.534,
-        comuna: data.comuna,
-        usuario_id: "usuario_prueba",
-        url_imagen: data.url_imagen,
-        etiquetas: data.etiquetas
-
+      // se construye json respetando estructura de tablas de neon
+      const datosFormateados = {
+        nombre: datosFormulario.nombre,
+        especie: datosFormulario.especie,
+        raza: datosFormulario.raza,
+        sexo: datosFormulario.sexo,
+        edad: parseInt(datosFormulario.edad, 10), 
+        comuna: datosFormulario.comuna,
+        latitud: -33.51,
+        longitud: -70.76,
+        
+        etiquetas: datosFormulario.etiquetas,
+        url_imagen: datosFormulario.url_imagen
       };
 
-      console.log("Enviando reporte", payload);
-
-      const respuesta = await fetch(`${API_URL}/api/mascotas`,{
-        method: "POST",
+      const res = await fetch(`${API_URL}/api/mascotas`, {
+        method: 'POST',
         headers: {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` 
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(datosFormateados)
       });
 
-      if(!respuest.ok){
-        throw new Error("Error en respuesta al crear reporte");
+      const resultado = await res.json();
+
+      if (!res.ok) {
+        // Si el backend te devuelve un error, avisa aqui
+        throw new Error(resultado.error || resultado.message || 'Error al intentar guardar el reporte.');
       }
 
-      const resultado = await respuesta.json();
-      console.log("Respuesta exitosa", resultado);
+      console.log("¡Mascota guardada con éxito en Neon!", resultado);
+      alert("¡Reporte publicado con éxito! Tu mascota quedó asociada a tu cuenta y registrada en Neon. 🐾");
+      navigate('/'); 
 
-      alert(`El reporte de ${data.nombre} se guardo con exito`);
-    }catch(e){
-      alert("Hubo un problema al publicar el reporte");
+    } catch (err) {
+      console.error("Error en el flujo de guardado:", err);
+      setError(err.message);
+    } finally {
+      setCargando(false);
     }
   };
 
-  return(
-    <Container className='Reportar-container'>
-        <div className="page-container" style={{ marginTop: '30px' }}>
-            <PetReportForm onPublish={handlePublishData} />
+  return (
+    <div className="reportar-page-container" style={{ padding: '20px' }}>
+      {error && (
+        <div style={{ color: 'red', backgroundColor: '#ffe6e6', padding: '10px', borderRadius: '5px', marginBottom: '15px' }}>
+          ⚠️ Error: {error}
         </div>
-    </Container>
+      )}
+      
+      {cargando && (
+        <div style={{ color: '#0070f3', marginBottom: '15px', fontWeight: 'bold' }}>
+          Guardando reporte de forma segura en Neon... 🕒
+        </div>
+      )}
+
+      <PetReportForm onPublish={handlePublishReport} />
+    </div>
   );
-}
+};
 
 export default Reportar;

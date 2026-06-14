@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL } from '../../config'; // conexion con gateway
+import { API_URL } from '../../config'; // Conexión con el gateway
 import '../../css/Components/organisms/PetReportForm.css';
 
 const PetReportForm = ({ onPublish }) => {
   const [formData, setFormData] = useState({
     nombre: '',
-    especie: 'Perro', 
+    especie: '', 
     raza: '',
-    sexo: 'Macho',   
+    sexo: '',  
     edad: '',
     comuna: '',    
     color: '',        
     lugarPerdida: '',
     horaPerdida: '',
     infoAdicional: '',
-    url_imagen: ''    // se cambia el archivo(input) a una url
+    url_imagen: ''    
   });
 
-  // states para manejar etiquetas de neon y seleccionadas por usuario
   const [listaEtiquetas, setListaEtiquetas] = useState([]);
   const [etiquetasSeleccionadas, setEtiquetasSeleccionadas] = useState([]);
 
-  // cargar etiquetas desde backend
+  // Cargar etiquetas desde el backend
   useEffect(() => {
     const obtenerEtiquetas = async () => {
       try {
@@ -48,7 +47,6 @@ const PetReportForm = ({ onPublish }) => {
     }));
   };
 
-  // controlar checkboxes
   const handleCheckboxChange = (etiquetaId) => {
     if (etiquetasSeleccionadas.includes(etiquetaId)) {
       setEtiquetasSeleccionadas(etiquetasSeleccionadas.filter(id => id !== etiquetaId));
@@ -62,7 +60,7 @@ const PetReportForm = ({ onPublish }) => {
     if (onPublish) {
       onPublish({
         ...formData,
-        etiquetas: etiquetasSeleccionadas
+        etiquetas: etiquetasSeleccionadas // envia los ids seleccionados
       });
     }
   };
@@ -72,7 +70,6 @@ const PetReportForm = ({ onPublish }) => {
       <h2 className="form-title">Reportar Mascota Perdida</h2>
       
       <div className="form-grid">
-        {/* url de la foto, reemplazando archivo directo */}
         <div className="form-group full-width">
           <label htmlFor="url_imagen">URL de la Foto de la Mascota</label>
           <input 
@@ -86,7 +83,6 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/* nombre */}
         <div className="form-group">
           <label htmlFor="nombre">Nombre de la Mascota</label>
           <input 
@@ -100,17 +96,20 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/* especie */}
+        {/* Especie */}
         <div className="form-group">
           <label htmlFor="especie">Especie</label>
-          <select id="especie" name="especie" value={formData.especie} onChange={handleChange} required>
-            <option value="Perro">Perro</option>
-            <option value="Gato">Gato</option>
-            <option value="Otro">Otro</option>
-          </select>
+          <input 
+            type="text" 
+            id="especie" 
+            name="especie" 
+            value={formData.especie} 
+            onChange={handleChange} 
+            placeholder="Ej: Perro, Gato, Ave..."
+            required 
+          />
         </div>
 
-        {/* raza */}
         <div className="form-group">
           <label htmlFor="raza">Raza</label>
           <input 
@@ -124,16 +123,20 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/* sexo */}
+        {/* Sexo */}
         <div className="form-group">
           <label htmlFor="sexo">Sexo</label>
-          <select id="sexo" name="sexo" value={formData.sexo} onChange={handleChange} required>
-            <option value="Macho">Macho</option>
-            <option value="Hembra">Hembra</option>
-          </select>
+          <input 
+            type="text" 
+            id="sexo" 
+            name="sexo" 
+            value={formData.sexo} 
+            onChange={handleChange} 
+            placeholder="Ej: Macho, Hembra..."
+            required 
+          />
         </div>
 
-        {/* edad */}
         <div className="form-group">
           <label htmlFor="edad">Edad (en años)</label>
           <input 
@@ -147,7 +150,6 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/* comuna */}
         <div className="form-group">
           <label htmlFor="comuna">Comuna</label>
           <input 
@@ -161,7 +163,6 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/* direccion del lugar de perdida */}
         <div className="form-group">
           <label htmlFor="lugarPerdida">Lugar de pérdida</label>
           <input 
@@ -175,7 +176,6 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/* hora de perdida */}
         <div className="form-group">
           <label htmlFor="horaPerdida">Hora de pérdida</label>
           <input 
@@ -188,7 +188,7 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        {/*checkbox de etiquetas */}
+        {/*Checkboxes de etiquetas*/}
         <div className="form-group full-width">
           <label className="fw-bold" style={{ display: 'block', marginBottom: '10px', color: '#555' }}>
             Selecciona características adicionales (Etiquetas):
@@ -207,7 +207,6 @@ const PetReportForm = ({ onPublish }) => {
           </div>
         </div>
 
-        {/* Información Adicional */}
         <div className="form-group full-width">
           <label htmlFor="infoAdicional">Información Adicional (Contacto, recompensa, etc.)</label>
           <textarea 
