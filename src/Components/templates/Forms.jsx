@@ -10,6 +10,7 @@ function Forms({ content, onChange}) {
         value={content.correo}
         placeholder="Correo"
         onChange={onChange}
+        required
       />
 
       <h3>Contraseña</h3>
@@ -19,6 +20,9 @@ function Forms({ content, onChange}) {
         value={content.contrasena}
         placeholder="Contraseña"
         onChange={onChange}
+        required
+        minLength={6}
+        maxLength={25}
       />
 
             

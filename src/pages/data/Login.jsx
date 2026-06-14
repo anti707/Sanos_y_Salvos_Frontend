@@ -19,6 +19,13 @@ const Login = () => {
         e.preventDefault();
         const { correo, contrasena } = form; //
 
+        //validar formato del correo
+        const regexCorreoDominio = /^[a-zA-Z0-9._%+-]+@(gmail|duocuc|yahoo)\.[a-zA-Z]{2,}$/;
+        if (!regexCorreoDominio.test(correo)) {
+            alert("Solo se permiten correos electrónicos válidos de @gmail, @duocuc o @yahoo.");
+            return; 
+        }
+
         try {
             // Firebase autentica las credenciales en el cliente
         const userCredential = await signInWithEmailAndPassword(auth, correo, contrasena); 
@@ -42,8 +49,12 @@ const Login = () => {
         alert("Inicio de sesión exitoso!!!"); 
         navigate("/");
         } catch (error) {
-            alert("Error al iniciar sesión: " + error.message); 
+            if (error.code === "auth/invalid-credential") {
+                alert("Correo o contraseña incorrectos.")
+            } else {
+                alert("Error al iniciar sesión: " + error.message); 
             console.error("Error en Login:", error); 
+            }
         }
     };
 

@@ -32,6 +32,13 @@ const Register = () => {
         const { correo, contrasena, nombre, apellido, fechaNacimiento, direccion } = form;
 
         try {
+            //validar el correo (no pude acerlo en el form :|)
+            const regexCorreoDominio = /^[a-zA-Z0-9._%+-]+@(gmail|duocuc|yahoo)\.[a-zA-Z]{2,}$/;
+            if (!regexCorreoDominio.test(correo)) {
+                alert("Solo se permiten correos electrónicos válidos de @gmail, @duocuc o @yahoo.");
+                return; // Detiene la ejecución aquí
+            }
+
             // A. Registramos al usuario en Firebase Authentication
             const infoUsuario = await createUserWithEmailAndPassword(auth, correo, contrasena);
             
@@ -70,8 +77,12 @@ const Register = () => {
             navigate("/"); 
 
         } catch (error) {
-            alert("Error al registrarse: " + error.message);
-            console.error("Error detallado:", error);
+            if (error.code === "auth/email-already-in-use") {
+                alert("Este correo ya esta registrado.")
+            } else {
+                alert("Error al registrarse: " + error.message);
+                console.error("Error detallado:", error);
+            }
         }
     };
 
