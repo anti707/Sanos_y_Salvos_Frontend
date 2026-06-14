@@ -15,6 +15,7 @@ function FormRegister({ content, onChange }) {
                         value={content.nombre}
                         placeholder="Nombre"
                         onChange={onChange}
+                        pattern="^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$" //validar que entren numeros
                         required
                     />
                 </div>
@@ -26,6 +27,7 @@ function FormRegister({ content, onChange }) {
                         value={content.apellido}
                         placeholder="Apellidos"
                         onChange={onChange}
+                        pattern="^[A-Za-záéíóúÁÉÍÓÚñÑ ]+$"
                         required
                     />
                 </div>
@@ -78,6 +80,8 @@ function FormRegister({ content, onChange }) {
                     value={content.contrasena}
                     placeholder="Mínimo 6 caracteres"
                     onChange={onChange}
+                    minLength={6}
+                    maxLength={25}
                     required
                 />
             </div>
