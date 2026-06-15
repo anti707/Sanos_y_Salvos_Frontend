@@ -3,10 +3,10 @@ import useGeolocation from "../../hooks/UseGeolocation";
 
 function MapaGeolocalizacion() {
   
-  // Consumimos tu hook en una sola línea
+  // Consumimos el hook en una sola línea
   const { position, accuracy, error } = useGeolocation();
 
-  const centroInicial = [-33.456, -70.648]; // Coordenadas por defecto (ej: Santiago de Chile)
+  const centroInicial = [-33.456, -70.648]; // Coordenadas por defecto
 
   return (
     <div style={{ height: "400px", width: "100%" }}>

@@ -60,6 +60,7 @@ const ProfilePage = () => {
     return () => desuscribir();
       }, [navigate]);
 
+      //vuelve a home al apretar el voton volver 
       const handleVolver = () => {
         navigate('/'); //
       };
@@ -72,7 +73,15 @@ const ProfilePage = () => {
   if (cargando) {
     return (
       <div className="container py-5 text-center text-secondary">
-        <div className="spinner-border text-success mb-2" role="status"></div>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
         <p>Conectando con Sanos&Salvos...</p>
       </div>
     );

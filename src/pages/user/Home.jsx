@@ -101,22 +101,22 @@ const preguntas = [
     {
       titulo: "¿Como funciona la geolocalizacion?",
       descripcion:
-        "En nuestra pagina la geolocalizacion es una herramienta sumamente util para la busqueda de las mascotas, ya que se puede indicar en donde se ha perdido o donde se ha visto la mascota.",
+        "La geolocalización es una tecnología que permite determinar la ubicación geográfica de un dispositivo, como un teléfono móvil o una computadora, utilizando diversas técnicas como GPS, Wi-Fi o torres de telefonía celular. En el contexto de nuestra página, utilizamos la geolocalización para ayudar a los usuarios a encontrar mascotas perdidas en su área, permitiendo que las personas cercanas puedan colaborar en la búsqueda y aumentar las posibilidades de reunir a las mascotas con sus dueños.",
     },
     {
       titulo: "¿Por que deberia realizar una donacion?",
       descripcion:
-        "En este caso es completamente voluntario el apoyo que desea realizar, sin embargo al realizarlo estara ayudando a mejorar nuestros servicios para ser mas eficaces en la busqueda de las mascotas perdidas.",
+        "Las donaciones son fundamentales para mantener y mejorar los servicios que ofrecemos en nuestra plataforma. Con tu contribución, podemos financiar campañas de concientización, mejorar la tecnología de geolocalización, y apoyar a las familias que han perdido a sus mascotas. Además, al donar, estás ayudando a crear una comunidad más solidaria y comprometida con el bienestar animal, lo que puede marcar la diferencia en la vida de muchas mascotas y sus dueños.",
     },
     {
       titulo: "¿Cómo puedo ayudar a otras familias?",
       descripcion:
-        "Excelente pregunta, puedes compartir información sobre mascotas perdidas, colaborar en búsquedas o donar recursos, tambien estando pendiente de los nuevos casos que han aparecido tomando todo esto en cuenta podremos colaborar entre todos para una busqueda mas eficaz.",
+        "Puedes compartir información sobre mascotas perdidas, colaborar en búsquedas o donar recursos. También puedes estar pendiente de los nuevos casos que han aparecido, tomando todo esto en cuenta podremos colaborar entre todos para una busqueda mas eficaz.",
     },
     {
       titulo: "¿Recibo algun tipo de recompensa al ayudar?",
       descripcion:
-        "No, al ayudar estara contribuyendo a una causa noble y sin fines de lucro a menos que la familia dela mascota este ofreciendo cierta recompensa, de parte de nuestra pagina recibira la satisfaccion de haber ayudado a un animalito para re encontrarse con su familia y poniendoles a salvo, no estamos de acuerdo en ofrecer ningun bien monetario para evitar cualquier tipo de intercambio comercial.",
+        "Si bien no ofrecemos recompensas monetarias, valoramos enormemente tu ayuda y compromiso. Al colaborar con nosotros, estás contribuyendo a una causa noble y ayudando a reunir a mascotas perdidas con sus dueños, lo cual es una recompensa en sí misma. Además, al ser parte de nuestra comunidad, puedes recibir actualizaciones sobre los casos que has apoyado y ver el impacto positivo de tu colaboración.",
     },
     
   ];

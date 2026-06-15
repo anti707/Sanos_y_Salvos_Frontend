@@ -5,6 +5,7 @@ import 'leaflet/dist/leaflet.css';
 import MapaGeolocalizacion from '../../Components/templates/MapaGeolocalizacion';
 
 
+
 function Map() {
    
 
