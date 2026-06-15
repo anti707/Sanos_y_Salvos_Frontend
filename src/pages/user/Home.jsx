@@ -5,7 +5,10 @@ import "../../Components/molecules/CardHorizontal"
 import CardGuia from "../../Components/molecules/CardGuia";
 import Acordion from '../../Components/molecules/Acordion';
 import CarouselHorizontal from '../../Components/organisms/CarouselHorizontal';
-
+import 'leaflet/dist/leaflet.css';
+import MapaGeolocalizacion from '../../Components/templates/MapaGeolocalizacion';
+import "../../css/pages/Apoyanos.css";
+import "../../css/pages/Map.css";
 
 
 
@@ -149,6 +152,11 @@ const preguntas = [
       </div>
 
       </div>
+      <h1 className="apoyanos-title">Mascotas perdidas reportadas cerca de ti</h1>     
+          <div className="contenedor-mapa">
+            <MapaGeolocalizacion />
+          </div>
+  
 
       <div className="py-5">
         <CarouselHorizontal 
@@ -156,6 +164,7 @@ const preguntas = [
           items={listaMascotas} 
       />
     </div>
+
 
 
         <div className="my-5" style={{width: "100vw",marginLeft: "calc(-50vw + 50%)",}}>

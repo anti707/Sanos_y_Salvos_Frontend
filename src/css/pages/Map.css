@@ -1,5 +1,8 @@
 .contenedor-mapa {
-  margin-top: 15px;
-  height: 500px;
+  margin-top: 25px;
+  height: 480px;
+  width: 100%;
   border-radius: 10px;
+  text-align: center;
+  border: double 3px #41a4af;
 }
