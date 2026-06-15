@@ -6,6 +6,7 @@ import logo from "../../assets/logo.png";
 import "../molecules/MenuDesplegable"
 import MenuDesplegable from "../molecules/MenuDesplegable";
 
+
 function Navbar({ links =[]}) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
