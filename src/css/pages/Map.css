@@ -10,6 +10,8 @@
   background: linear-gradient(135deg, #f8fcfd 0%, #eef8fb 100%);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   padding: 8px;
+  position: relative;
+  isolation: isolate;
 }
 
 .contenedor-mapa .leaflet-container {
@@ -17,4 +19,11 @@
   width: 100% !important;
   border-radius: 18px;
   box-shadow: inset 0 0 0 1px rgba(65, 164, 175, 0.12);
+  display: block;
+  position: relative;
+  z-index: 0;
+}
+
+.contenedor-mapa .leaflet-control-container {
+  z-index: 10;
 }

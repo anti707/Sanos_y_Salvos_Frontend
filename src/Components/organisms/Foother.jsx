@@ -28,7 +28,7 @@ function Foother() {
                     </div>
 
 
-                    <div className="footer-rigth">
+                    <div className="footer-right">
                         <img src={logo} alt="Logo" className="footer-logo" />
                           
                     </div>

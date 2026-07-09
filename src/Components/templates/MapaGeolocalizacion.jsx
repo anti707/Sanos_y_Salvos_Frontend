@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Circle, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Circle, Popup, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
@@ -16,6 +16,25 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 import { getAuthHeaders } from '../../utils/authToken';
+
+function AjustarTamanoMapa() {
+  const map = useMap();
+
+  useEffect(() => {
+    const ajustar = () => {
+      map.invalidateSize({ pan: false });
+    };
+
+    ajustar();
+    window.addEventListener('resize', ajustar);
+
+    return () => {
+      window.removeEventListener('resize', ajustar);
+    };
+  }, [map]);
+
+  return null;
+}
 
 function MapaGeolocalizacion({ onSeleccionarMascota }) {
   const { position, accuracy, error: geolocationError } = useGeolocation();
@@ -125,6 +144,7 @@ function MapaGeolocalizacion({ onSeleccionarMascota }) {
       {cargando && <div className="alert alert-info">Cargando reportes...</div>}
 
       <MapContainer center={centroMapa} zoom={13} style={{ height: '100%', width: '100%' }}>
+        <AjustarTamanoMapa />
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
