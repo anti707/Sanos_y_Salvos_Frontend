@@ -7,11 +7,18 @@ function MenuDesplegable() {
   return (
     <div className="dropdown">
       <button
-        className="btn btn-light dropdown-toggle px-4 py-2 rounded-pill shadow"
+        className="dropdown-toggle px-4 py-2 rounded-pill border-0"
         type="button"
         id="dropdownMenuButton"
         data-bs-toggle="dropdown"
         aria-expanded="false"
+        style={{
+          background: 'linear-gradient(135deg, #4ab8c2 0%, #3baabd 100%)',
+          color: '#fff',
+          fontWeight: 700,
+          boxShadow: '0 6px 14px rgba(74, 184, 194, 0.25)',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+        }}
       >
         ☰ Menú
       </button>

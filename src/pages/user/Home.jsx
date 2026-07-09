@@ -35,10 +35,16 @@ function Home() {
       fecha: 'ayer'
     },
     {
-      imagen: 'https://placedog.net/501',
+      imagen: 'https://placedog.net/503',
       titulo: 'eduard',
       descripcion: 'Perrito muy juguetón pero asustadizo, lo hemos buscado por toda la comuna de p.a.c. pero nada, lleva perdido 2 dias',
       fecha: '3 minutos'
+    },
+    {
+      imagen: 'https://placedog.net/506',
+      titulo: 'rey',
+      descripcion: 'Perrito muy juguetón pero asustadizo, lo hemos buscado por toda la comuna de cerrillos, lleva perdido una semana',
+      fecha: '7 horas'
     }
   ];
 

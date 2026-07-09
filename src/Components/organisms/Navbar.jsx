@@ -60,7 +60,7 @@ function Navbar({ links =[]}) {
 
 
         <div className="nav-right">
-          <BarraBusqueda onBuscar={(query) => navigate(`/search?q=${query}`)} />
+          <BarraBusqueda onBuscar={(query) => navigate(`/vermascota?search=${encodeURIComponent(query)}`)} />
 
         </div>
         

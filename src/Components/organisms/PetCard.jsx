@@ -11,7 +11,7 @@ function PetCard({
     return (
         <div className="card mb-3">
             {imagen && (
-                <div style={{ height: '460px', overflow: 'hidden', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', backgroundColor: '#f3f3f3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ height: '550px', overflow: 'hidden', borderTopLeftRadius: '12px', borderTopRightRadius: '12px', backgroundColor: '#f3f3f3', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <img 
                         src={imagen} 
                         className="card-img-top" 

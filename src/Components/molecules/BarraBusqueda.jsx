@@ -6,11 +6,14 @@ function BarraBusqueda({ onBuscar }) {
   const [buscar, setBuscar] = useState("");
 
   const handleSearch = () => {
-    if (buscar.trim() !== "") onBuscar(buscar);
+    const texto = buscar.trim();
+    if (texto) {
+      onBuscar?.(texto);
+    }
   };
 
   return (
-    <div style={{ display: "flex", gap: "12px" }}>
+    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
       <Buscar
         value={buscar}
         onChange={(e) => setBuscar(e.target.value)}

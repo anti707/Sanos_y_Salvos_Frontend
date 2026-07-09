@@ -172,7 +172,7 @@ function MapaGeolocalizacion({ onSeleccionarMascota }) {
                 <img
                   src={mascotaSeleccionada.imagenes[0].url_imagen}
                   alt={mascotaSeleccionada.nombre}
-                  style={{ width: '100%', maxHeight: '260px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
+                  style={{ width: '300px', maxHeight: '350px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
                 />
               )}
               <p><strong>Especie:</strong> {mascotaSeleccionada.especie || 'No especificada'}</p>

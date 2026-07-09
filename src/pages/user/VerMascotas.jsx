@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Modal, Button } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import PasaPag from "../../Components/organisms/PasaPag";
 import PetCard from "../../Components/organisms/PetCard";
 import { API_URL } from "../../config"; //  url del gateway
 import { getAuthHeaders } from "../../utils/authToken";
 
 function VerMascotas() {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const terminoBusqueda = queryParams.get('search')?.toLowerCase() || '';
   const [mascotas, setMascotas] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);
@@ -46,6 +50,24 @@ function VerMascotas() {
     cargarMascotas();
   }, []);
 
+  const mascotasFiltradas = mascotas.filter((mascota) => {
+    if (!terminoBusqueda) return true;
+
+    const textoMascota = [
+      mascota?.nombre,
+      mascota?.especie,
+      mascota?.raza,
+      mascota?.comuna,
+      mascota?.sexo,
+      mascota?.infoAdicional
+    ]
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase();
+
+    return textoMascota.includes(terminoBusqueda);
+  });
+
   useEffect(() => {
     const abrirDesdeMapa = () => {
       const mascotaGuardada = localStorage.getItem('selected-pet');
@@ -67,16 +89,20 @@ function VerMascotas() {
   }, []);
    
   return (
-    <Container className='VerMascotas-container'>
-      <div className="container my-5" style={{ maxWidth: '600px' }}>
+    <Container className='VerMascotas-container' style={{ minHeight: '70vh', display: 'flex', flexDirection: 'column' }}>
+      <div className="container my-5" style={{ maxWidth: '680px', width: '100%', flex: '1' }}>
         <h1 className="mb-4 text-center">Mascotas perdidas</h1>
         
         {cargando ? (
-          <p className="text-center">Cargando peluditos...</p>
-        ) : mascotas.length === 0 ? (
-          <p className="text-center">No hay reportes activos. 🐾</p>
+          <div style={{ minHeight: '260px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <p className="text-center mb-0">Cargando peluditos...</p>
+          </div>
+        ) : mascotasFiltradas.length === 0 ? (
+          <div style={{ minHeight: '260px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <p className="text-center mb-0">No hay reportes que coincidan con tu búsqueda. 🐾</p>
+          </div>
         ) : (
-          mascotas.map((mascota) => {
+          mascotasFiltradas.map((mascota) => {
             // saca la primera imagen si existe, o un placeholder gris
             const imagenUrl = mascota.imagenes && mascota.imagenes.length > 0 
               ? mascota.imagenes[0].url_imagen 
@@ -97,7 +123,7 @@ function VerMascotas() {
         )}
       </div>
 
-      <div>
+      <div style={{ marginTop: 'auto', paddingTop: '20px' }}>
         <PasaPag />
       </div>
 
@@ -112,7 +138,7 @@ function VerMascotas() {
                 <img
                   src={mascotaSeleccionada.imagenes[0].url_imagen}
                   alt={mascotaSeleccionada.nombre}
-                  style={{ width: '100%', maxHeight: '260px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
+                  style={{ width: '300px', maxHeight: '350px', objectFit: 'cover', borderRadius: '8px', marginBottom: '12px' }}
                 />
               )}
               <p><strong>Especie:</strong> {mascotaSeleccionada.especie || 'No especificada'}</p>
