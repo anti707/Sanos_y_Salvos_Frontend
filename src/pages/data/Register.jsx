@@ -15,7 +15,6 @@ const Register = () => {
         apellido: "",
         correo: "",
         fechaNacimiento: "",
-        direccion: "",
         contrasena: ""
     });
 
@@ -29,7 +28,7 @@ const Register = () => {
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const { correo, contrasena, nombre, apellido, fechaNacimiento, direccion } = form;
+        const { correo, contrasena, nombre, apellido, fechaNacimiento } = form;
 
         try {
             //validar el correo (no pude acerlo en el form :|)
@@ -52,7 +51,6 @@ const Register = () => {
                 apellido,
                 correo,
                 fechaNacimiento,
-                direccion,
                 fechaRegistro: new Date().toLocaleDateString(), 
                 foto: "https://via.placeholder.com/150" 
             });
@@ -68,8 +66,7 @@ const Register = () => {
                     uid: infoUsuario.user.uid, // Mantenemos el mismo ID para cruzar datos
                     nombre,
                     apellido,
-                    correo,
-                    direccion
+                    correo
                 })
             });
 

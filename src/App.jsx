@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
-import { Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Home from "./pages/user/Home";
 import Login from "./pages/data/Login";
 import Apoyanos from "./pages/user/Apoyanos";
@@ -26,26 +25,57 @@ function App() {
   //FUNCION PARA  QUE TODAS LAS PAGINAS TENGAN EL NAVBAR Y EL FOOTER MENOS LOGIN Y REGISTRO
   const MainLayout = ({ user }) => {
     return (
-        <>
-            <Nabvar user={user} />
-            
-            <Outlet /> 
-
-            <Footer />
-        </>
+      <>
+        <Nabvar user={user} />
+        <Outlet />
+        <Footer />
+      </>
     );
-};
+  };
 
+  const ProtectedRoute = ({ user, loading, children }) => {
+    if (loading) {
+      return (
+        <div style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center", fontFamily: "serif", color: "#2f6f70" }}>
+          Cargando...
+        </div>
+      );
+    }
+
+    if (!user) {
+      return <Navigate to="/login" replace />;
+    }
+
+    return children;
+  };
+
+  const PublicRoute = ({ user, loading, children }) => {
+    if (loading) {
+      return (
+        <div style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center", fontFamily: "serif", color: "#2f6f70" }}>
+          Cargando...
+        </div>
+      );
+    }
+
+    if (user) {
+      return <Navigate to="/" replace />;
+    }
+
+    return children;
+  };
 
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (userFirebase) => {
       setUser(userFirebase);
+      setLoading(false);
     });
 
     return () => unsubscribe();
-    }, []);
+  }, []);
 
     
   return (
@@ -53,21 +83,26 @@ function App() {
 
 
         <Routes>
+          <Route path="/login" element={<PublicRoute user={user} loading={loading}><Login /></PublicRoute>} />
+          <Route path="/registro" element={<PublicRoute user={user} loading={loading}><Registro /></PublicRoute>} />
 
-          <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Registro />} />
-
-            <Route element={<MainLayout user={user} />}>
-                <Route path="/" element={<Home/>} />
-                <Route path="/apoyanos" element={<Apoyanos />} />
-                <Route path="/map" element={<Map />} />
-                <Route path="/contactanos" element={<Contactanos />} />
-                <Route path="/reportar" element={<Reportar />} />
-                <Route path="/vermascota" element={<VerMascotas />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/profilepage" element={<ProfilePage/>} />
-                <Route path="/simulador-webpay" element={<SimuladorWebpay />} />
-            </Route>
+          <Route
+            element={
+              <ProtectedRoute user={user} loading={loading}>
+                <MainLayout user={user} />
+              </ProtectedRoute>
+            }
+          >
+            <Route path="/" element={<Home />} />
+            <Route path="/apoyanos" element={<Apoyanos />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/contactanos" element={<Contactanos />} />
+            <Route path="/reportar" element={<Reportar />} />
+            <Route path="/vermascota" element={<VerMascotas />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profilepage" element={<ProfilePage />} />
+            <Route path="/simulador-webpay" element={<SimuladorWebpay />} />
+          </Route>
         </Routes>
 
 

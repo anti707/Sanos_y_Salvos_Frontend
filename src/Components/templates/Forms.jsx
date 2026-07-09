@@ -2,9 +2,10 @@ function Forms({ content, onChange}) {
 
   return (
     <div className="Form">
-      
-        <h3>Correo Electrónico</h3>
+      <label className="Form-label" htmlFor="correo">Correo Electrónico</label>
       <input
+        id="correo"
+        className="Form-input"
         type="email"
         name="correo"
         value={content.correo}
@@ -13,8 +14,10 @@ function Forms({ content, onChange}) {
         required
       />
 
-      <h3>Contraseña</h3>
+      <label className="Form-label" htmlFor="contrasena">Contraseña</label>
       <input
+        id="contrasena"
+        className="Form-input"
         type="password"
         name="contrasena"
         value={content.contrasena}
@@ -24,8 +27,6 @@ function Forms({ content, onChange}) {
         minLength={6}
         maxLength={25}
       />
-
-            
     </div>
   );
 }

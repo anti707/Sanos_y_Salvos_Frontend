@@ -46,29 +46,16 @@ function FormRegister({ content, onChange }) {
                 />
             </div>
 
-            {/* FECHA DE NACIMIENTO Y DIRECCIÓN */}
-            <div className="form-row-double">
-                <div className="input-field">
-                    <label>Fecha de nacimiento</label>
-                    <input
-                        type="date"
-                        name="fechaNacimiento"
-                        value={content.fechaNacimiento}
-                        onChange={onChange}
-                        required
-                    />
-                </div>
-                <div className="input-field">
-                    <label>Dirección</label>
-                    <input
-                        type="text"
-                        name="direccion"
-                        value={content.direccion}
-                        placeholder="Ej. Av. Estación 345"
-                        onChange={onChange}
-                        required
-                    />
-                </div>
+            {/* FECHA DE NACIMIENTO */}
+            <div className="input-field full-width">
+                <label>Fecha de nacimiento</label>
+                <input
+                    type="date"
+                    name="fechaNacimiento"
+                    value={content.fechaNacimiento}
+                    onChange={onChange}
+                    required
+                />
             </div>
 
             {/*CONTRASEÑA */}
