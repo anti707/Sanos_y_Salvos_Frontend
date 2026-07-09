@@ -196,7 +196,7 @@ const PetReportForm = ({ onPublish }) => {
 
         <div className="form-group full-width">
           <label>Ubicación del reporte en el mapa</label>
-          <p className="map-helper-text">Haz clic en el mapa para seleccionar la zona donde se perdió la mascota.</p>
+          <p className="map-helper-text">mueve el marcador azul a la zona donde se perdió la mascota.</p>
           <div className="map-picker-container">
             <MapContainer
               center={ubicacionSeleccionada}
