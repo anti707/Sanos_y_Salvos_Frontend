@@ -80,6 +80,25 @@
   background-color: #216b6c;
 }
 
+.map-picker-container {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #d7d7d7;
+}
+
+.map-helper-text {
+  margin: 0 0 8px 0;
+  font-size: 0.9rem;
+  color: #5e7b7d;
+}
+
+.map-coords-text {
+  display: block;
+  margin-top: 8px;
+  color: #497f84;
+  font-weight: 600;
+}
+
 @media (max-width: 600px) {
   .form-grid {
     grid-template-columns: 1fr;

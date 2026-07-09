@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PetReportForm from '../../Components/organisms/PetReportForm';
 import { API_URL } from '../../config';
+import { getAuthHeaders } from '../../utils/authToken';
 
 const Reportar = () => {
   const navigate = useNavigate();
@@ -13,43 +14,59 @@ const Reportar = () => {
     setError(null);
 
     try {
-      const token = localStorage.getItem("token");
-      if (!token) throw new Error("No tienes una sesión activa. Por favor, inicia sesión.");
+      const headers = await getAuthHeaders();
 
-      // se construye json respetando estructura de tablas de neon
+      let latitud = datosFormulario?.latitud ?? -33.51;
+      let longitud = datosFormulario?.longitud ?? -70.76;
+
+      if (!Number.isFinite(latitud) || !Number.isFinite(longitud)) {
+        latitud = -33.51;
+        longitud = -70.76;
+      }
+
+      const edadNumerica = Number.parseInt(datosFormulario?.edad, 10);
+      const edadValida = Number.isFinite(edadNumerica) ? edadNumerica : 0;
+
       const datosFormateados = {
-        nombre: datosFormulario.nombre,
-        especie: datosFormulario.especie,
-        raza: datosFormulario.raza,
-        sexo: datosFormulario.sexo,
-        edad: parseInt(datosFormulario.edad, 10), 
-        comuna: datosFormulario.comuna,
-        latitud: -33.51,
-        longitud: -70.76,
-        
-        etiquetas: datosFormulario.etiquetas,
-        url_imagen: datosFormulario.url_imagen
+        nombre: datosFormulario?.nombre?.trim(),
+        especie: datosFormulario?.especie?.trim(),
+        raza: datosFormulario?.raza?.trim(),
+        sexo: datosFormulario?.sexo?.trim(),
+        edad: edadValida,
+        latitud,
+        longitud,
+        latitude: latitud,
+        longitude: longitud,
+        infoAdicional: datosFormulario?.infoAdicional?.trim(),
+        info_adicional: datosFormulario?.infoAdicional?.trim(),
+        color: datosFormulario?.color?.trim(),
+        etiquetas: datosFormulario?.etiquetas || [],
+        url_imagen: datosFormulario?.url_imagen?.trim() || ''
       };
 
       const res = await fetch(`${API_URL}/api/mascotas`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}` 
-        },
+        headers,
         body: JSON.stringify(datosFormateados)
       });
 
-      const resultado = await res.json();
+      let resultado = null;
+      try {
+        resultado = await res.json();
+      } catch (parseError) {
+        resultado = null;
+      }
 
       if (!res.ok) {
-        // Si el backend te devuelve un error, avisa aqui
-        throw new Error(resultado.error || resultado.message || 'Error al intentar guardar el reporte.');
+        const mensajeError = resultado?.error || resultado?.message || resultado?.detail || 'Error al registrar mascota';
+        throw new Error(mensajeError);
       }
 
       console.log("¡Mascota guardada con éxito en Neon!", resultado);
+      localStorage.setItem('map-refresh-token', Date.now().toString());
+      window.dispatchEvent(new Event('map-refresh'));
       alert("¡Reporte publicado con éxito! Tu mascota quedó asociada a tu cuenta y registrada en Neon. 🐾");
-      navigate('/'); 
+      navigate('/map'); 
 
     } catch (err) {
       console.error("Error en el flujo de guardado:", err);
@@ -63,7 +80,7 @@ const Reportar = () => {
     <div className="reportar-page-container" style={{ padding: '20px' }}>
       {error && (
         <div style={{ color: 'red', backgroundColor: '#ffe6e6', padding: '10px', borderRadius: '5px', marginBottom: '15px' }}>
-          ⚠️ Error: {error}
+           Error: {error}
         </div>
       )}
       

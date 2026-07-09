@@ -5,4 +5,12 @@
   border-radius: 10px;
   text-align: center;
   border: double 5px #41a4af;
+  overflow: hidden;
+  background: #f7fbfd;
+}
+
+.contenedor-mapa .leaflet-container {
+  height: 100% !important;
+  width: 100% !important;
+  border-radius: 10px;
 }

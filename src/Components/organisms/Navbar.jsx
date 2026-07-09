@@ -27,8 +27,15 @@ function Navbar({ links =[]}) {
       <div className="navbar-inner">
 
         <div className="nav-left">
-          <img src={logo} alt="Logo" className="nav-logo" />
-          <h1 className="nav-brand"><span>Sanos&Salvos</span></h1>
+          <button
+            type="button"
+            onClick={() => navigate('/')}
+            className="nav-logo-button"
+            aria-label="Ir al inicio"
+          >
+            <img src={logo} alt="Logo" className="nav-logo" />
+            <h1 className="nav-brand"><span>Sanos&Salvos</span></h1>
+          </button>
         </div>
 
         <div className="nav-menu">

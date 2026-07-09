@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import L from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png';
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import { API_URL } from '../../config'; // Conexión con el gateway
 import '../../css/Components/organisms/PetReportForm.css';
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 const PetReportForm = ({ onPublish }) => {
   const [formData, setFormData] = useState({
@@ -9,16 +22,14 @@ const PetReportForm = ({ onPublish }) => {
     raza: '',
     sexo: '',  
     edad: '',
-    comuna: '',    
     color: '',        
-    lugarPerdida: '',
-    horaPerdida: '',
     infoAdicional: '',
     url_imagen: ''    
   });
 
   const [listaEtiquetas, setListaEtiquetas] = useState([]);
   const [etiquetasSeleccionadas, setEtiquetasSeleccionadas] = useState([]);
+  const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState([-33.4569, -70.6483]);
 
   // Cargar etiquetas desde el backend
   useEffect(() => {
@@ -60,7 +71,9 @@ const PetReportForm = ({ onPublish }) => {
     if (onPublish) {
       onPublish({
         ...formData,
-        etiquetas: etiquetasSeleccionadas // envia los ids seleccionados
+        etiquetas: etiquetasSeleccionadas,
+        latitud: ubicacionSeleccionada[0],
+        longitud: ubicacionSeleccionada[1]
       });
     }
   };
@@ -150,44 +163,6 @@ const PetReportForm = ({ onPublish }) => {
           />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="comuna">Comuna</label>
-          <input 
-            type="text" 
-            id="comuna" 
-            name="comuna" 
-            value={formData.comuna} 
-            onChange={handleChange} 
-            placeholder="Ej: Ñuñoa, Providencia..."
-            required 
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="lugarPerdida">Lugar de pérdida</label>
-          <input 
-            type="text" 
-            id="lugarPerdida" 
-            name="lugarPerdida" 
-            value={formData.lugarPerdida} 
-            onChange={handleChange} 
-            placeholder="Ej: Av. Grecia con Macul"
-            required 
-          />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="horaPerdida">Hora de pérdida</label>
-          <input 
-            type="time" 
-            id="horaPerdida" 
-            name="horaPerdida" 
-            value={formData.horaPerdida} 
-            onChange={handleChange} 
-            required 
-          />
-        </div>
-
         {/*Checkboxes de etiquetas*/}
         <div className="form-group full-width">
           <label className="fw-bold" style={{ display: 'block', marginBottom: '10px', color: '#555' }}>
@@ -217,6 +192,44 @@ const PetReportForm = ({ onPublish }) => {
             placeholder="Se ofrece recompensa, necesita medicamentos..."
             rows="3"
           />
+        </div>
+
+        <div className="form-group full-width">
+          <label>Ubicación del reporte en el mapa</label>
+          <p className="map-helper-text">Haz clic en el mapa para seleccionar la zona donde se perdió la mascota.</p>
+          <div className="map-picker-container">
+            <MapContainer
+              center={ubicacionSeleccionada}
+              zoom={13}
+              style={{ height: '280px', width: '100%' }}
+              whenCreated={(map) => {
+                map.on('click', (e) => {
+                  setUbicacionSeleccionada([e.latlng.lat, e.latlng.lng]);
+                });
+              }}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker
+                position={ubicacionSeleccionada}
+                draggable={true}
+                eventHandlers={{
+                  dragend: (event) => {
+                    const marker = event.target;
+                    const { lat, lng } = marker.getLatLng();
+                    setUbicacionSeleccionada([lat, lng]);
+                  }
+                }}
+              >
+                <Popup>Ubicación seleccionada</Popup>
+              </Marker>
+            </MapContainer>
+          </div>
+          <small className="map-coords-text">
+            Coordenadas: {ubicacionSeleccionada[0].toFixed(4)}, {ubicacionSeleccionada[1].toFixed(4)}
+          </small>
         </div>
       </div>
 

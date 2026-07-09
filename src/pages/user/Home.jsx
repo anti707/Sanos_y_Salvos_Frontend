@@ -154,7 +154,10 @@ const preguntas = [
       </div>
       <h1 className="apoyanos-title">Mascotas perdidas reportadas cerca de ti</h1>     
           <div className="contenedor-mapa">
-            <MapaGeolocalizacion />
+            <MapaGeolocalizacion onSeleccionarMascota={(mascota) => {
+              localStorage.setItem('selected-pet', JSON.stringify(mascota));
+              window.dispatchEvent(new Event('open-pet-detail'));
+            }} />
           </div>
   
 
@@ -197,6 +200,7 @@ const preguntas = [
         <div className="d-flex flex-row flex-wrap gap-4 justify-content-center">
         {guias.map((guia) => (
           <CardGuia
+            key={guia.id}
             id={guia.id}
             imagen={guia.imagen}
             titulo={guia.titulo}

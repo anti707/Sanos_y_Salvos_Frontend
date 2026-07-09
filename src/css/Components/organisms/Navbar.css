@@ -22,6 +22,16 @@
   flex-shrink: 0;
 }
 
+.nav-logo-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
 .nav-logo {
   height: 90px;
 }
