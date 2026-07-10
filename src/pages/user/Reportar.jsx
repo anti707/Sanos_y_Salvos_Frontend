@@ -32,7 +32,7 @@ const Reportar = () => {
       }
 
       const urlImagen = typeof datosFormulario?.url_imagen === 'string'
-        ? datosFormulario.url_imagen.trim()
+        ? (datosFormulario.url_imagen.trim().startsWith('data:image/') ? '' : datosFormulario.url_imagen.trim())
         : '';
 
       const datosFormateados = {

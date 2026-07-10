@@ -174,6 +174,7 @@ function VerMascotas() {
 
             const informacionAdicional = obtenerInformacionAdicional(mascota);
             const etiquetasTexto = obtenerEtiquetasTexto(mascota);
+            const textoEtiquetas = etiquetasTexto ? `Etiquetas: ${etiquetasTexto}` : 'Etiquetas: Sin etiquetas registradas';
 
             return (
               <PetCard
@@ -181,7 +182,7 @@ function VerMascotas() {
                 titulo={mascota.nombre}
                 descripcion={`${mascota.especie} ${mascota.raza}. Sexo: ${mascota.sexo}, Edad: ${mascota.edad} años.${informacionAdicional ? ` ${informacionAdicional}` : ''}`}
                 imagen={imagenUrl}
-                ultimaActualizacion={etiquetasTexto ? `Etiquetas: ${etiquetasTexto}` : 'Sin etiquetas registradas'}
+                ultimaActualizacion={textoEtiquetas}
                 altImagen={`Foto de ${mascota.nombre}`}
                 onVerMas={() => abrirDetalle(mascota)}
               />
