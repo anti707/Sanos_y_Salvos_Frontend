@@ -101,6 +101,7 @@ function App() {
             <Route path="/vermascota" element={<VerMascotas />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/profilepage" element={<ProfilePage />} />
+            <Route path="/ProfilePage" element={<ProfilePage />} />
             <Route path="/simulador-webpay" element={<SimuladorWebpay />} />
           </Route>
         </Routes>
