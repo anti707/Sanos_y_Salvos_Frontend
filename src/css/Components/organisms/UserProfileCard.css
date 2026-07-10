@@ -19,17 +19,18 @@
     margin-bottom: 20px;
 }
 
-.avatar-wrapper {
+.avatar-wrapper,
+.profile-avatar-icon-wrapper {
     width: 122px;
     height: 122px;
     border-radius: 50%;
     background: #eef5ff;
     border: 2px solid #d7e7ff;
-    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 24px rgba(45, 125, 210, 0.12);
+    margin-bottom: 8px;
 }
 
 .profile-avatar {

@@ -24,7 +24,11 @@ function Profile({ user }) {
     <div className="profile-container">
       <div className="profile-card">
         <div className="profile-hero">
-          <div className="profile-avatar">{nombreUsuario?.charAt(0)?.toUpperCase() || "U"}</div>
+          <div className="profile-avatar-icon-wrapper">
+            <svg viewBox="0 0 24 24" className="profile-avatar-icon" aria-hidden="true">
+              <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.33 0-6 1.79-6 4v1h12v-1c0-2.21-2.67-4-6-4Z" />
+            </svg>
+          </div>
           <div>
             <h1>Hola, {nombreUsuario}</h1>
             <p className="profile-subtitle">Tu espacio para gestionar tu cuenta</p>

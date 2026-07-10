@@ -1,10 +1,6 @@
-import { useState } from "react";
 import "../../css/Components/organisms/UserProfileCard.css";
 
 function UserProfileCard({ userData, onBack, onLogout }) {
-    const [fotoError, setFotoError] = useState(false);
-    const hasFoto = Boolean(userData.foto?.trim());
-
     if (!userData) return <p className="profile-loading">Cargando datos del perfil...</p>;
 
     return (
@@ -13,18 +9,9 @@ function UserProfileCard({ userData, onBack, onLogout }) {
             {/* NOMBRE */}
             <div className="profile-header">
                 <div className="avatar-wrapper">
-                    {hasFoto && !fotoError ? (
-                        <img 
-                            src={userData.foto} 
-                            alt="Avatar de Usuario" 
-                            className="profile-avatar"
-                            onError={() => setFotoError(true)}
-                        />
-                    ) : (
-                        <svg viewBox="0 0 24 24" className="profile-avatar-icon" aria-hidden="true">
-                            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.33 0-6 1.79-6 4v1h12v-1c0-2.21-2.67-4-6-4Z" />
-                        </svg>
-                    )}
+                    <svg viewBox="0 0 24 24" className="profile-avatar-icon" aria-hidden="true">
+                        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.33 0-6 1.79-6 4v1h12v-1c0-2.21-2.67-4-6-4Z" />
+                    </svg>
                 </div>
                 <h1 className="profile-name">
                     {userData.nombre || "Usuario"} {userData.apellido || ""}
