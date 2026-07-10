@@ -1,7 +1,10 @@
+import { useState } from "react";
 import "../../css/Components/organisms/UserProfileCard.css";
 
+function UserProfileCard({ userData, onBack, onLogout }) {
+    const [fotoError, setFotoError] = useState(false);
+    const hasFoto = Boolean(userData.foto?.trim());
 
-function UserProfileCard({ userData, onBack, onEdit, onLogout }) {
     if (!userData) return <p className="profile-loading">Cargando datos del perfil...</p>;
 
     return (
@@ -10,11 +13,18 @@ function UserProfileCard({ userData, onBack, onEdit, onLogout }) {
             {/* NOMBRE */}
             <div className="profile-header">
                 <div className="avatar-wrapper">
-                    <img 
-                        src={userData.foto || "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&h=150"} 
-                        alt="Avatar de Usuario" 
-                        className="profile-avatar"
-                    />
+                    {hasFoto && !fotoError ? (
+                        <img 
+                            src={userData.foto} 
+                            alt="Avatar de Usuario" 
+                            className="profile-avatar"
+                            onError={() => setFotoError(true)}
+                        />
+                    ) : (
+                        <svg viewBox="0 0 24 24" className="profile-avatar-icon" aria-hidden="true">
+                            <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-3.33 0-6 1.79-6 4v1h12v-1c0-2.21-2.67-4-6-4Z" />
+                        </svg>
+                    )}
                 </div>
                 <h1 className="profile-name">
                     {userData.nombre || "Usuario"} {userData.apellido || ""}
@@ -25,10 +35,9 @@ function UserProfileCard({ userData, onBack, onEdit, onLogout }) {
 
             {/*INFORMACIÓN*/}
             <div className="profile-info-grid">
-                
                 <div className="info-card-item">
                     <span className="item-label">Correo Electrónico</span>
-                    <strong className="item-value">{userData.correo}</strong>
+                    <strong className="item-value">{userData.correo || "No registrado"}</strong>
                 </div>
 
                 <div className="info-card-item">
@@ -37,24 +46,20 @@ function UserProfileCard({ userData, onBack, onEdit, onLogout }) {
                 </div>
 
                 <div className="info-card-item">
-                    <span className="item-label">Direccion</span>
-                    <strong className="item-value">{userData.direccion || "No especificada"}</strong>
+                    <span className="item-label">Nombre completo</span>
+                    <strong className="item-value">{`${userData.nombre || "Usuario"} ${userData.apellido || ""}`.trim() || "No especificado"}</strong>
                 </div>
 
                 <div className="info-card-item">
                     <span className="item-label">Miembro desde</span>
                     <strong className="item-value">{userData.fechaRegistro || userData.fecha || "Recientemente"}</strong>
                 </div>
-
             </div>
 
             {/*BOTONES INFERIORES */}
             <div className="profile-actions-row">
                 <button onClick={onBack} className="btn-profile btn-profile-back">
                     Volver
-                </button>
-                <button onClick={onEdit} className="btn-profile btn-profile-edit">
-                    Editar Mis Datos
                 </button>
                 <button onClick={onLogout} className="btn-profile btn-profile-logout">
                     Cerrar sesión

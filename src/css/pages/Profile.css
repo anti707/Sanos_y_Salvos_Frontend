@@ -2,41 +2,93 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  min-height: 80vh;
+  padding: 24px;
+  background: linear-gradient(135deg, #f7fbff 0%, #eef7ff 100%);
 }
 
 .profile-card {
-  width: 320px;
-  padding: 30px;
-  border-radius: 12px;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: min(100%, 460px);
+  padding: 32px;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow: 0 16px 40px rgba(33, 77, 117, 0.12);
+  border: 1px solid #e5f0fb;
+}
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4da3ff, #2d7dd2);
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(45, 125, 210, 0.2);
 }
 
 .profile-card h1 {
-  margin-bottom: 20px;
-  font-size: 22px;
+  margin: 0 0 6px;
+  font-size: 24px;
+  color: #1f3b57;
 }
 
-.profile-card p {
-  font-size: 16px;
-  margin-bottom: 20px;
-  color: #333;
+.profile-subtitle {
+  margin: 0;
+  color: #6b85a1;
+  font-size: 14px;
+}
+
+.profile-info {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.profile-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f7fbff;
+  border: 1px solid #e8f2fb;
+}
+
+.profile-label {
+  font-weight: 600;
+  color: #4f6f8f;
+}
+
+.profile-value {
+  color: #22415d;
+  text-align: right;
 }
 
 .logout-button {
-  padding: 10px 18px;
+  width: 100%;
+  padding: 12px 18px;
   border: none;
-  border-radius: 8px;
-  background-color: #e74c3c;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a59, #ff5c7a);
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(255, 92, 122, 0.2);
 }
 
 .logout-button:hover {
-  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(255, 92, 122, 0.25);
 }
