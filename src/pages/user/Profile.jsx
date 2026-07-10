@@ -17,14 +17,30 @@ function Profile({ user }) {
     }
   };
 
+  const nombreUsuario = user?.displayName || user?.name || "Usuario";
+  const correo = user?.email || "Sin correo registrado";
+
   return (
     <div className="profile-container">
       <div className="profile-card">
-        <h1>👤 Perfil de usuario</h1>
+        <div className="profile-hero">
+          <div className="profile-avatar">{nombreUsuario?.charAt(0)?.toUpperCase() || "U"}</div>
+          <div>
+            <h1>Hola, {nombreUsuario}</h1>
+            <p className="profile-subtitle">Tu espacio para gestionar tu cuenta</p>
+          </div>
+        </div>
 
-        <p>
-          <strong>Email:</strong> {user?.email}
-        </p>
+        <div className="profile-info">
+          <div className="profile-item">
+            <span className="profile-label">Correo</span>
+            <span className="profile-value">{correo}</span>
+          </div>
+          <div className="profile-item">
+            <span className="profile-label">Estado</span>
+            <span className="profile-value">Cuenta activa</span>
+          </div>
+        </div>
 
         <button onClick={handleLogout} className="logout-button">
           Cerrar sesión
