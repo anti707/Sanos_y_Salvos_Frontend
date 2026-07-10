@@ -27,6 +27,8 @@ const PetReportForm = ({ onPublish }) => {
     url_imagen: ''    
   });
 
+  const [archivoImagen, setArchivoImagen] = useState(null);
+  const [previewImagen, setPreviewImagen] = useState('');
   const [listaEtiquetas, setListaEtiquetas] = useState([]);
   const [etiquetasSeleccionadas, setEtiquetasSeleccionadas] = useState([]);
   const [ubicacionSeleccionada, setUbicacionSeleccionada] = useState([-33.4569, -70.6483]);
@@ -58,6 +60,28 @@ const PetReportForm = ({ onPublish }) => {
     }));
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) {
+      setArchivoImagen(null);
+      setPreviewImagen('');
+      return;
+    }
+
+    setArchivoImagen(file);
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const dataUrl = reader.result;
+      setPreviewImagen(dataUrl);
+      setFormData((prev) => ({
+        ...prev,
+        url_imagen: dataUrl
+      }));
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleCheckboxChange = (etiquetaId) => {
     if (etiquetasSeleccionadas.includes(etiquetaId)) {
       setEtiquetasSeleccionadas(etiquetasSeleccionadas.filter(id => id !== etiquetaId));
@@ -71,6 +95,7 @@ const PetReportForm = ({ onPublish }) => {
     if (onPublish) {
       onPublish({
         ...formData,
+        url_imagen: formData.url_imagen || previewImagen || '',
         etiquetas: etiquetasSeleccionadas,
         latitud: ubicacionSeleccionada[0],
         longitud: ubicacionSeleccionada[1]
@@ -83,8 +108,23 @@ const PetReportForm = ({ onPublish }) => {
       <h2 className="form-title">Reportar Mascota Perdida</h2>
       
       <div className="form-grid">
-        <div className="form-group full-width">
-          <label htmlFor="url_imagen">URL de la Foto de la Mascota</label>
+        <div className="form-group full-width image-upload-group">
+          <label htmlFor="url_imagen">Foto de la mascota (opcional)</label>
+          <p className="image-helper-text">Puedes subir una imagen desde tu dispositivo o pegar una URL. Si no deseas agregar una, puedes dejarlo vacío.</p>
+          <div className="file-picker-wrapper">
+            <label htmlFor="imagenArchivo" className="file-picker-button">Elegir archivo</label>
+            <span className="file-picker-name">
+              {archivoImagen ? archivoImagen.name : 'Ningún archivo seleccionado'}
+            </span>
+            <input
+              type="file"
+              id="imagenArchivo"
+              name="imagenArchivo"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="file-picker-input"
+            />
+          </div>
           <input 
             type="text" 
             id="url_imagen" 
@@ -92,8 +132,10 @@ const PetReportForm = ({ onPublish }) => {
             placeholder="https://images.unsplash.com/photo-ejemplo..."
             value={formData.url_imagen}
             onChange={handleChange}
-            required
           />
+          {previewImagen && (
+            <img src={previewImagen} alt="Vista previa de la mascota" className="image-preview" />
+          )}
         </div>
 
         <div className="form-group">
@@ -159,6 +201,8 @@ const PetReportForm = ({ onPublish }) => {
             value={formData.edad} 
             onChange={handleChange} 
             placeholder="Ej: 3"
+            min="0"
+            max="100"
             required 
           />
         </div>

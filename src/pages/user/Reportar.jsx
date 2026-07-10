@@ -25,7 +25,15 @@ const Reportar = () => {
       }
 
       const edadNumerica = Number.parseInt(datosFormulario?.edad, 10);
-      const edadValida = Number.isFinite(edadNumerica) ? edadNumerica : 0;
+      const edadValida = Number.isFinite(edadNumerica) ? Math.min(Math.max(edadNumerica, 0), 100) : 0;
+
+      if (edadNumerica > 100) {
+        throw new Error('La edad debe ser menor o igual a 100 años.');
+      }
+
+      const urlImagen = typeof datosFormulario?.url_imagen === 'string'
+        ? datosFormulario.url_imagen.trim()
+        : '';
 
       const datosFormateados = {
         nombre: datosFormulario?.nombre?.trim(),
@@ -41,7 +49,7 @@ const Reportar = () => {
         info_adicional: datosFormulario?.infoAdicional?.trim(),
         color: datosFormulario?.color?.trim(),
         etiquetas: datosFormulario?.etiquetas || [],
-        url_imagen: datosFormulario?.url_imagen?.trim() || ''
+        url_imagen: urlImagen
       };
 
       const res = await fetch(`${API_URL}/api/mascotas`, {
@@ -66,7 +74,7 @@ const Reportar = () => {
       localStorage.setItem('map-refresh-token', Date.now().toString());
       window.dispatchEvent(new Event('map-refresh'));
       alert("¡Reporte publicado con éxito! Tu mascota quedó asociada a tu cuenta y registrada en Neon. 🐾");
-      navigate('/map'); 
+      navigate('/'); 
 
     } catch (err) {
       console.error("Error en el flujo de guardado:", err);

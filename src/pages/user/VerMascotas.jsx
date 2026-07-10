@@ -11,6 +11,7 @@ function VerMascotas() {
   const queryParams = new URLSearchParams(location.search);
   const terminoBusqueda = queryParams.get('search')?.toLowerCase() || '';
   const [mascotas, setMascotas] = useState([]);
+  const [etiquetasDisponibles, setEtiquetasDisponibles] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
@@ -30,7 +31,6 @@ function VerMascotas() {
       try {
         const headers = await getAuthHeaders();
 
-        // petición segura al api Gateway
         const respuesta = await fetch(`${API_URL}/api/mascotas`, {
           method: "GET",
           headers
@@ -47,7 +47,25 @@ function VerMascotas() {
       }
     };
 
+    const cargarEtiquetas = async () => {
+      try {
+        const headers = await getAuthHeaders();
+        const respuesta = await fetch(`${API_URL}/api/etiquetas`, {
+          method: "GET",
+          headers
+        });
+
+        if (respuesta.ok) {
+          const datos = await respuesta.json();
+          setEtiquetasDisponibles(Array.isArray(datos) ? datos : []);
+        }
+      } catch (error) {
+        console.error("Error cargando etiquetas:", error);
+      }
+    };
+
     cargarMascotas();
+    cargarEtiquetas();
   }, []);
 
   const mascotasFiltradas = mascotas.filter((mascota) => {
@@ -67,6 +85,52 @@ function VerMascotas() {
 
     return textoMascota.includes(terminoBusqueda);
   });
+
+  const obtenerInformacionAdicional = (mascota) => {
+    return mascota?.infoAdicional || mascota?.info_adicional || mascota?.descripcion || mascota?.informacionAdicional || '';
+  };
+
+  const obtenerEtiquetasTexto = (mascota) => {
+    const etiquetas = mascota?.etiquetas;
+
+    if (!etiquetas) {
+      return '';
+    }
+
+    if (Array.isArray(etiquetas)) {
+      const nombres = etiquetas
+        .map((item) => {
+          if (typeof item === 'string') return item;
+          return item?.nombre_etiqueta || item?.nombre || item?.etiqueta || item?.label;
+        })
+        .filter(Boolean);
+
+      if (nombres.length > 0) {
+        return nombres.join(', ');
+      }
+
+      const ids = etiquetas
+        .map((item) => (typeof item === 'number' ? item : Number(item)))
+        .filter((item) => Number.isFinite(item));
+
+      if (ids.length > 0) {
+        const mapaEtiquetas = new Map(
+          etiquetasDisponibles.map((etiq) => [Number(etiq.id), etiq.nombre_etiqueta || etiq.nombre || etiq.label])
+        );
+
+        return ids
+          .map((id) => mapaEtiquetas.get(id))
+          .filter(Boolean)
+          .join(', ');
+      }
+    }
+
+    if (typeof etiquetas === 'string') {
+      return etiquetas;
+    }
+
+    return '';
+  };
 
   useEffect(() => {
     const abrirDesdeMapa = () => {
@@ -108,13 +172,16 @@ function VerMascotas() {
               ? mascota.imagenes[0].url_imagen 
               : 'https://via.placeholder.com/150';
 
+            const informacionAdicional = obtenerInformacionAdicional(mascota);
+            const etiquetasTexto = obtenerEtiquetasTexto(mascota);
+
             return (
               <PetCard
                 key={mascota.id} 
                 titulo={mascota.nombre}
-                descripcion={`${mascota.especie} ${mascota.raza}. Sexo: ${mascota.sexo}, Edad: ${mascota.edad} años.`}
+                descripcion={`${mascota.especie} ${mascota.raza}. Sexo: ${mascota.sexo}, Edad: ${mascota.edad} años.${informacionAdicional ? ` ${informacionAdicional}` : ''}`}
                 imagen={imagenUrl}
-                ultimaActualizacion={`Comuna: ${mascota.comuna || 'No especificada'}`}
+                ultimaActualizacion={etiquetasTexto ? `Etiquetas: ${etiquetasTexto}` : 'Sin etiquetas registradas'}
                 altImagen={`Foto de ${mascota.nombre}`}
                 onVerMas={() => abrirDetalle(mascota)}
               />
@@ -145,8 +212,8 @@ function VerMascotas() {
               <p><strong>Raza:</strong> {mascotaSeleccionada.raza || 'No especificada'}</p>
               <p><strong>Sexo:</strong> {mascotaSeleccionada.sexo || 'No especificado'}</p>
               <p><strong>Edad:</strong> {mascotaSeleccionada.edad ? `${mascotaSeleccionada.edad} años` : 'No especificada'}</p>
-              <p><strong>Comuna:</strong> {mascotaSeleccionada.comuna || 'No especificada'}</p>
-              <p><strong>Información adicional:</strong> {mascotaSeleccionada.infoAdicional || 'Sin información adicional'}</p>
+              <p><strong>Etiquetas:</strong> {obtenerEtiquetasTexto(mascotaSeleccionada) || 'Sin etiquetas registradas'}</p>
+              <p><strong>Información adicional:</strong> {obtenerInformacionAdicional(mascotaSeleccionada) || 'Sin información adicional'}</p>
             </div>
           )}
         </Modal.Body>
